@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `abook_entrys` (
   `group` enum('1','2','3','4') NOT NULL default '1',
   PRIMARY KEY  (`id`),
   KEY `user` (`user`)
-) TYPE=MyISAM  AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=10 ;
 
 --
 -- Daten für Tabelle `abook_entrys`
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `attacks` (
   KEY `from_cluster` (`from_cluster`),
   KEY `to_cluster` (`to_cluster`),
   KEY `success` (`success`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `attacks`
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `cboards` (
   KEY `thread` (`thread`),
   KEY `relative` (`relative`),
   KEY `box` (`box`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `cboards`
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `clusters` (
   `srate_noticed_cnt` int(11) default '0',
   PRIMARY KEY  (`id`),
   KEY `code` (`code`)
-) TYPE=MyISAM  AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `clusters`
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `cl_pacts` (
   `partner` smallint(6) default NULL,
   KEY `cluster` (`cluster`),
   KEY `partner` (`partner`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 --
 -- Daten für Tabelle `cl_pacts`
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `cl_reqs` (
   `dealed` char(3) default 'no',
   KEY `cluster` (`cluster`),
   KEY `dealed` (`dealed`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 --
 -- Daten für Tabelle `cl_reqs`
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `da_participants` (
   `owner` smallint(6) NOT NULL default '0',
   `owner_name` varchar(40) NOT NULL default '',
   KEY `relative` (`relative`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 --
 -- Daten für Tabelle `da_participants`
@@ -205,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `distr_attacks` (
   `item` enum('av','cpu','fw') NOT NULL default 'av',
   PRIMARY KEY  (`id`),
   KEY `cluster` (`cluster`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `distr_attacks`
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   PRIMARY KEY  (`id`),
   KEY `usr_id` (`usr_id`),
   KEY `ip` (`ip`)
-) TYPE=MyISAM  AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=5 ;
 
 --
 -- Daten für Tabelle `logins`
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `payload` tinytext NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `usr_id` (`usr_id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `logs`
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `mails` (
   `xread` char(3) default NULL,
   PRIMARY KEY  (`mail`),
   KEY `user` (`user`)
-) TYPE=MyISAM  AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `mails`
@@ -333,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `pcs` (
   PRIMARY KEY  (`id`),
   KEY `ip` (`ip`),
   KEY `owner` (`owner`)
-) TYPE=MyISAM  AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=4 ;
 
 --
 -- Daten für Tabelle `pcs`
@@ -360,7 +360,7 @@ CREATE TABLE IF NOT EXISTS `rank_clusters` (
   `av_pcs` float default '0',
   `success_rate` float default '0',
   PRIMARY KEY  (`platz`)
-) TYPE=MyISAM  AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=2 ;
 
 --
 -- Daten für Tabelle `rank_clusters`
@@ -382,7 +382,7 @@ CREATE TABLE IF NOT EXISTS `rank_users` (
   `points` int(11) default '0',
   `cluster` smallint(6) default NULL,
   PRIMARY KEY  (`platz`)
-) TYPE=MyISAM  AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=2 ;
 
 --
 -- Daten für Tabelle `rank_users`
@@ -402,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `setting` (
   `name` varchar(50) NOT NULL,
   `value` varchar(50) NOT NULL,
   PRIMARY KEY  (`setting_id`)
-) TYPE=MyISAM  AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=10 ;
 
 --
 -- Daten für Tabelle `setting`
@@ -433,7 +433,7 @@ CREATE TABLE IF NOT EXISTS `sysmsgs` (
   `xread` char(3) default NULL,
   PRIMARY KEY  (`msg`),
   KEY `user` (`user`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `sysmsgs`
@@ -455,7 +455,7 @@ CREATE TABLE IF NOT EXISTS `transfers` (
   `to_usr` smallint(6) default NULL,
   `credits` bigint(11) default '0',
   `time` varchar(10) default NULL
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 --
 -- Daten für Tabelle `transfers`
@@ -478,7 +478,7 @@ CREATE TABLE IF NOT EXISTS `upgrades` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `uniqueid` (`uniqueid`),
   KEY `pc` (`pc`)
-) TYPE=MyISAM  AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=7 ;
 
 --
 -- Daten für Tabelle `upgrades`
@@ -547,7 +547,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `name_2` (`name`),
   KEY `name` (`name`),
   KEY `sid` (`sid`)
-) TYPE=MyISAM  AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `users`
@@ -567,9 +567,8 @@ CREATE TABLE IF NOT EXISTS `verifyimgs` (
   `id` smallint(6) NOT NULL default '0',
   `chars` char(3) NOT NULL default '',
   KEY `id` (`id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 --
 -- Daten für Tabelle `verifyimgs`
 --
-
