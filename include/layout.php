@@ -80,8 +80,8 @@ class layout
             {
                 // INGAME ITEMS
 
-                $this->menu_entry('game.php?m=start' . $sid . '&amp;' . SID, '&Uuml;bersicht',
-                    '&Uuml;bersicht &uuml;ber alles Wichtige auf einen Blick.');
+                $this->menu_entry('game.php?m=start' . $sid . '&amp;' . SID, 'übersicht',
+                    'übersicht über alles Wichtige auf einen Blick.');
 
                 if ($usr['newmail'] > 0)
                 {
@@ -107,8 +107,8 @@ class layout
                 }
 
                 $help = ((int)$usr['cluster'] > 0 ?
-                    'Hier kannst du dich &uuml;ber den aktuellen Stand deines Clusters informieren' :
-                    'Hier kannst du einen neuen Cluster gr&uuml;nden oder einem existierenden beitreten.');
+                    'Hier kannst du dich über den aktuellen Stand deines Clusters informieren' :
+                    'Hier kannst du einen neuen Cluster gründen oder einem existierenden beitreten.');
                 $this->menu_entry('cluster.php?a=start' . $sid, 'Cluster', $help);
 
                 $this->menu_entry('game.php?m=subnet' . $sid, 'Subnet',
@@ -129,11 +129,11 @@ class layout
                 $this->menu_entry('pub.php?d=impressum', 'Impressum');
                 $this->menu_entry('pub.php?d=credits', 'HTN-Team');
                 $this->menu_entry('pub.php?d=stats', 'Statistik',
-                    'Statistische Daten &uuml;ber das Spiel');
+                    'Statistische Daten über das Spiel');
                 $this->menu_entry('pub.php?d=rules', 'Spielregeln', 'Wer die nicht beachtet, fliegt!');
-                $this->menu_entry('pub.php?d=faq', 'FAQ', 'H&auml;ufig gestellte Fragen zu HTN');
+                $this->menu_entry('pub.php?d=faq', 'FAQ', 'Häufig gestellte Fragen zu HTN');
                 $this->menu_entry('pub.php?d=newpwd', 'Neues Passwort',
-                    'Ein neues Passwort f&uuml;r deinen Account anfordern');
+                    'Ein neues Passwort für deinen Account anfordern');
                 $this->menu_entry('pub.php?a=register', 'Registrieren',
                     'Einen HackTheNet-Account anlegen');
             }

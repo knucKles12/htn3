@@ -26,7 +26,7 @@ class points
         ignore_user_abort(0);
         $clusters = array();
 
-        // Alle Datens&auml;tze zurcksetzen,
+        // Alle DatensÃ¤tze zurcksetzen,
         // damit es bei herrenlosen PCs keine falschen Anzeigen gibt:
         #db_query('UPDATE pcs SET owner_name=\'\', owner_points=0, owner_cluster=0, owner_cluster_code=\'\';');
 
@@ -150,8 +150,8 @@ class points
                 $psucceeded = $scnt * 100 / $total;
                 $pnoticed = $ncnt * 100 / $total;
 
-                // Erfolg ist gut und zählt 75%
-                // Bemerkt ist schlecht (deshalb 100-$pnoticed) und zählt 25%
+                // Erfolg ist gut und zï¿½hlt 75%
+                // Bemerkt ist schlecht (deshalb 100-$pnoticed) und zï¿½hlt 25%
                 $srate = $psucceeded * 0.75 + (100 - $pnoticed) * 0.25;
             } else
                 $srate = 0;

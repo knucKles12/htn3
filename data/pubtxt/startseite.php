@@ -1,15 +1,14 @@
-<div class="content" id="public"><h2>Willkommen bei HackTheNet</h2>  
-                                                        
+<div class="content" id="public"><h2>Welcome to HackTheNet 3</h2>
+
 <?php
 
 include_once('./config.php');
-$langl = new lang; 
+$langl = new lang;
 
 $langl->includeLang('de', 'data/pubtxt/startseite');
 
 $s1='checked="checked" '; $s2='';
-if(substr_count(($_COOKIE['htnLoginData4']),'|')==2)
-{
+if(substr_count(($_COOKIE['htnLoginData4']),'|')==2) {
   list($server,$usrname,$pwd) = explode('|',$_COOKIE['htnLoginData4']);
   $server = (int)$server;
   $usrname = htmlentities($usrname);
@@ -26,11 +25,12 @@ echo $notif;
 <form action="login.php?a=login" method="post">
 <input type="hidden" name="server" value="1" />
 <table>
-<tr><th><?=$lang['name']?></th><td><input name="nick" maxlength="20" <?=$usrname?>/></td></tr>
-<tr><th><?=$lang['pass']?></th><td><input type="password" name="pwd" <?=$pwd?>/></td></tr>
-<th>Erweitert:</th><td><input type="checkbox" name="save" value="yes" <?=$sv?>/> Login speichern<br />
-<input type="checkbox" name="noipcheck" value="yes" /> <?=$lang['kip']?><br /><?=$lang['ne']?></td></tr>
-<tr><th colspan="2" style="text-align:right;"><input type="submit" value="  <?=$lang['enter']?>  " /></th></tr>
+<!-- #(in php < qm) =$usrname, =$pwd, =$sv -->
+<tr><th>Username</th><td><input name="nick" maxlength="20" /></td></tr>
+<tr><th>Password</th><td><input type="password" name="pwd" /></td></tr>
+<th></th><td><input type="checkbox" name="save" value="yes" /> Remember me<br />
+<input type="checkbox" name="noipcheck" value="yes" /> No IP check<br />(not recommended)</td></tr>
+<tr><th colspan="2" style="text-align:right;"><input type="submit" value="  Login  " /></th></tr>
 </table>
 </form>
 </div>

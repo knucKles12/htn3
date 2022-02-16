@@ -20,7 +20,7 @@ class cluster
         # ich bin keinem (existierenden) Cluster
         global $STYLESHEET, $REMOTE_FILES_DIR, $DATADIR, $sid, $usrid, $pcid;
         echo '<div id="cluster-found">
-<h3>Cluster gr&uuml;nden</h3>
+<h3>Cluster gründen</h3>
 <form action="cluster.php?page=found&amp;sid=' . $sid . '" method="post">
 <table>
 <tr>
@@ -31,7 +31,7 @@ class cluster
 <th>Code:</th>
 <td><input type="text" name="code" maxlength="12" /></td>
 </tr>
-<tr><td colspan="2"><input type="submit" value="Gr&uuml;nden" /></td>
+<tr><td colspan="2"><input type="submit" value="Gründen" /></td>
 </tr>
 </table>
 </form>
@@ -183,7 +183,7 @@ Dort findest du einen "Mitgliedsantrag stellen"-Link.</p></div>
         switch ($code)
         {
             case CV_WAR:
-                $s = 'Kriegserkl&auml;rung';
+                $s = 'Kriegserklärung';
                 break;
             case CV_BEISTAND:
                 $s = 'Beistandsvertrag';
@@ -238,14 +238,14 @@ Dort findest du einen "Mitgliedsantrag stellen"-Link.</p></div>
         if (mysql_num_rows($r) > 0)
         {
             echo '<div id="cluster-convents">
-  <h3>Eigene bestehende Vertr&auml;ge</h3>
+  <h3>Eigene bestehende Verträge</h3>
   <table>
   <tr>
   <th>Cluster</th>
   <th>Vertrag</th>';
             if ($usr['clusterstat'] > 20)
             {
-                echo '<th>L�schen?</th>';
+                echo '<th>L�schen?</th>';
             }
             echo '</tr>
   ';
@@ -260,7 +260,7 @@ Dort findest du einen "Mitgliedsantrag stellen"-Link.</p></div>
                 {
                     echo '<td><a href="cluster.php?page=delconvent&amp;sid=' . $sid .
                         '&amp;convent=' . $pact['convent'] . '-' . $pact['partner'] .
-                        '">L&ouml;schen</a></td>';
+                        '">Löschen</a></td>';
                 }
                 echo '</tr>
   ';
@@ -275,7 +275,7 @@ Dort findest du einen "Mitgliedsantrag stellen"-Link.</p></div>
         if (mysql_num_rows($r) > 0)
         {
             echo '<div id="cluster-convents">
-  <h3>Bestehende Vertr&auml;ge anderer Cluster mit uns</h3>
+  <h3>Bestehende Verträge anderer Cluster mit uns</h3>
   <table>
   <tr>
   <th>Cluster</th>

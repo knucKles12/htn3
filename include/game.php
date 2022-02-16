@@ -56,7 +56,7 @@ class game
                 echo ' kostet ' . $c . ' Credits';
             } else
             {
-                echo 'Kein Update mehr m&ouml;glich!';
+                echo 'Kein Update mehr möglich!';
             }
             echo '</td>' . LF . '</tr>' . "\n";
         }
@@ -120,7 +120,7 @@ class game
                 echo $s . '</a>';
             } else
             {
-                echo 'Nicht gen&uuml;gend Geld';
+                echo 'Nicht genügend Geld';
             }
             echo '</td></tr>';
             return true;

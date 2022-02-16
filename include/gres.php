@@ -61,7 +61,7 @@ class gres
     function no_($code = -1)
     {
         //------------------------- NO!!! -------------------------------
-        simple_message('Ung&uuml;ltige Anforderung!<br /><span style="font-size:10pt;">(Code: ' .
+        simple_message('Ung√ºltige Anforderung!<br /><span style="font-size:10pt;">(Code: ' .
             $code . ')</font>');
     }
 
@@ -96,7 +96,7 @@ class gres
                 $r = 'morgen ';
                 break;
             case $uebermorgen:
-                $r = '&uuml;bermorgen ';
+                $r = '√ºbermorgen ';
                 break;
             default:
                 $r = $default;
@@ -321,7 +321,7 @@ class gres
 
         if ($silent === false)
             simple_message('Der Cluster ' . $cid .
-                ' wurde gel&ouml;scht.<br /><a href="cluster.php?mode=start&sid=' . $sid .
+                ' wurde gel√∂scht.<br /><a href="cluster.php?mode=start&sid=' . $sid .
                 '">Weiter</a>');
     } 
     
@@ -357,7 +357,7 @@ class gres
         global $bucks;
         $pcid = $pc['id']; # h4ck
 
-        # Upgrade-Vorg‰nge verarbeiten
+        # Upgrade-VorgÔøΩnge verarbeiten
         $r = $dbc->db_query('SELECT * FROM `upgrades` WHERE `pc`=\'' . $pcid . '\' AND `end`<=\'' .
             time() . '\' ORDER BY `start` ASC');
         $cnt = @mysql_num_rows($r);
@@ -651,7 +651,7 @@ class gres
 
     /** string safeentities(text)
      * ----------------------------
-     * Wandelt Sonderzeichen in Entit‰ten um vermeidet jedoch mehrfache Entsch‰rfungen wie wie &amp;amp;auml;
+     * Wandelt Sonderzeichen in EntitÔøΩten um vermeidet jedoch mehrfache EntschÔøΩrfungen wie wie &amp;amp;auml;
      * aus Marcels lib_string_tools
      * Parameter:
      * string $text : Umzuwandelnder Text

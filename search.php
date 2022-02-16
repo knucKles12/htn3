@@ -37,7 +37,7 @@ echo '<div id="search-form">
 
 <div id="search-form-user" style="display:block;">
 <h4>Suche nach Spielern</h4>
-<p>Das H&auml;cken entfernen um beliebige Werte zuzulassen.</p>
+<p>Das Häcken entfernen um beliebige Werte zuzulassen.</p>
 
 <table>
 
@@ -46,8 +46,8 @@ echo '<div id="search-form">
 <td><input type="checkbox" name="user_use_name" value="yes" checked="checked" title="Wert beachten" /></td>
 <td>
   <select name="user_name_opt">
-  <option value="exact">stimmt genau &uuml;berein</option>
-  <option value="contains">enth&auml;lt</option>
+  <option value="exact">stimmt genau überein</option>
+  <option value="contains">enthält</option>
   </select>
 </td>
 <td>
@@ -62,7 +62,7 @@ echo '<div id="search-form">
   <select name="user_points_opt">
   <option value="min">mindestens</option>
   <option value="equal">genau</option>
-  <option value="max">h&ouml;chstens</option>
+  <option value="max">höchstens</option>
   </select>
 </td>
 <td>
@@ -75,8 +75,8 @@ echo '<div id="search-form">
 <td><input type="checkbox" name="user_use_cluster_name" value="yes" checked="checked" title="Wert beachten" /></td>
 <td>
   <select name="user_cluster_name_opt">
-  <option value="exact">stimmt genau &uuml;berein</option>
-  <option value="contains">enth&auml;lt</option>
+  <option value="exact">stimmt genau überein</option>
+  <option value="contains">enthält</option>
   </select>
 </td>
 <td>
@@ -99,7 +99,7 @@ echo '<div id="search-form">
 
 <div id="search-form-pcs" style="display:none;">
 <h4>Suche nach Computern</h4>
-<p>Das H&auml;cken entfernen um beliebige Werte zuzulassen.</p>
+<p>Das Häcken entfernen um beliebige Werte zuzulassen.</p>
 
 <table>
 <tr>
@@ -118,8 +118,8 @@ echo '<div id="search-form">
 <td><input type="checkbox" name="pcs_use_owner" value="yes" checked="checked" title="Wert beachten" /></td>
 <td>
   <select name="pcs_owner_opt">
-  <option value="exact">stimmt genau &uuml;berein</option>
-  <option value="contains">enth&auml;lt</option>
+  <option value="exact">stimmt genau überein</option>
+  <option value="contains">enthält</option>
   <option value="noowneronly">nur PCs ohne Besitzer</option>
   </select>
 </td>
@@ -135,7 +135,7 @@ echo '<div id="search-form">
   <select name="pcs_points_opt">
   <option value="min">mindestens</option>
   <option value="equal">genau</option>
-  <option value="max">h&ouml;chstens</option>
+  <option value="max">höchstens</option>
   </select>
 </td>
 <td>
@@ -148,7 +148,7 @@ echo '<div id="search-form">
 
 <div id="search-form-cluster" style="display:none;">
 <h4>Suche nach Clustern</h4>
-<p>Das H&auml;cken entfernen um beliebige Werte zuzulassen.</p>
+<p>Das Häcken entfernen um beliebige Werte zuzulassen.</p>
 
 </div>
 

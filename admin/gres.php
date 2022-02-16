@@ -26,7 +26,7 @@ if ( file_exists('data/work.txt')== true || file_exists('data/mysql-backup.txt')
   <div class="info">
   <h3>Information</h3>
   <p>Im Moment wird am Server gearbeitet.<br />
-  Bitte probiere es doch später noch einmal.<br />
+  Bitte probiere es doch spï¿½ter noch einmal.<br />
   Du kannst auch so lange dem <a href="http://forum.hackthenet.org/">Forum</a> einen Besuch abstatten.</p>
   </div>
   </div>
@@ -67,19 +67,19 @@ if ( file_exists('data/mysql-backup-prepare.txt')== true )
 {
   $notif='<div class="work">
   <h3>Server-Arbeiten</h3>
-  <p>Das Spiel wird für ca. eine Minute nicht zugänglich sein.</p></div>';
+  <p>Das Spiel wird fï¿½r ca. eine Minute nicht zugï¿½nglich sein.</p></div>';
 }
 if ( file_exists('data/longwork-prepare.txt')== true ) 
 {
   $notif='<div class="work">
   <h3>Server-Arbeiten</h3>
-  <p>Das Spiel wird in ca. 2 Minuten für längere Zeit nicht zugänglich sein.</p></div>';
+  <p>Das Spiel wird in ca. 2 Minuten fï¿½r lï¿½ngere Zeit nicht zugï¿½nglich sein.</p></div>';
 }
 if(isset($_GET['ok'])) 
 {
   $ok=nl2br(strip_tags($_GET['ok'],'<br /><br>'));
   $notif.='<div class="ok">
-  <h3>Aktion ausgef&uuml;hrt</h3>
+  <h3>Aktion ausgefÃ¼hrt</h3>
   <p>'.$ok.'</p></div>
   ';
 }
@@ -246,9 +246,9 @@ if(!function_exists('html_entity_decode'))
 }
 
 /**
-* Generiert einen zufällig zusammengesetzen String
-* @return string Zufälliiger String
-* @param $chars Länge des Strings
+* Generiert einen zufï¿½llig zusammengesetzen String
+* @return string Zufï¿½lliiger String
+* @param $chars Lï¿½nge des Strings
 **/
 function random_string($chars = 6)
 {
@@ -270,7 +270,7 @@ function randomchar()
 function no_($code=-1) 
 {
   //------------------------- NO!!! -------------------------------
-  simple_message('Ung&uuml;ltige Anforderung!<br /><span style="font-size:10pt;">(Code: '.$code.')</font>');
+  simple_message('UngÃ¼ltige Anforderung!<br /><span style="font-size:10pt;">(Code: '.$code.')</font>');
 }
 
 function NiceTime($ts=0) 
@@ -292,7 +292,7 @@ function NiceTime_GetStr($ts,$default)
     case $gestern: $r='gestern '; break;
     case $vorgestern: $r='vorgestern '; break;
     case $morgen: $r='morgen '; break;
-    case $uebermorgen: $r='&uuml;bermorgen '; break;
+    case $uebermorgen: $r='Ã¼bermorgen '; break;
     default: $r=$default;
   }
   return $r;
@@ -612,7 +612,7 @@ function deletecluster($cid,$silent=false)
   db_query('DELETE FROM cl_reqs WHERE cluster=\''.mysql_escape_string($cid).'\'');
   db_query('UPDATE users SET clusterstat=0, cm=\'\', cluster=0 WHERE cluster=\''.mysql_escape_string($cid).'\'');
   
-  if($silent===false) simple_message('Der Cluster '.$cid.' wurde gel&ouml;scht.<br /><a href="cluster.php?mode=start&sid='.$sid.'">Weiter</a>');
+  if($silent===false) simple_message('Der Cluster '.$cid.' wurde gelÃ¶scht.<br /><a href="cluster.php?mode=start&sid='.$sid.'">Weiter</a>');
 }
 
 settype($rem_e_a,'array');
@@ -669,7 +669,7 @@ function processupgrades(&$pc,$savepc=true)
   global $bucks;
   $pcid=$pc['id']; # h4ck
   
-  # Upgrade-Vorgänge verarbeiten
+  # Upgrade-Vorgï¿½nge verarbeiten
   $r = db_query('SELECT * FROM `upgrades` WHERE `pc`=\''.$pcid.'\' AND `end`<=\''.time().'\' ORDER BY `start` ASC');
   $cnt = @mysql_num_rows($r);
   if($cnt > 0)
@@ -883,7 +883,7 @@ function isavailh($id,$pc)
 
 /** string safeentities(text)
 * ----------------------------
-* Wandelt Sonderzeichen in Entitäten um vermeidet jedoch mehrfache Entschärfungen wie wie &amp;amp;auml;
+* Wandelt Sonderzeichen in Entitï¿½ten um vermeidet jedoch mehrfache Entschï¿½rfungen wie wie &amp;amp;auml;
 * aus Marcels lib_string_tools
 * Parameter:
 * string $text : Umzuwandelnder Text

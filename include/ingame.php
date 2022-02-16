@@ -8,7 +8,7 @@ class ingame
     	$gres = new gres();
         global $sid;
         $sid = '';
-        $gres->simple_message('Sitzung ung&uuml;ltig!<br />Bitte auf der <a href="./">Startseite</a> neu einloggen!<br /><br /><span style="font-size:9pt;">Grund: ' .
+        $gres->simple_message('Sitzung ungültig!<br />Bitte auf der <a href="./">Startseite</a> neu einloggen!<br /><br /><span style="font-size:9pt;">Grund: ' .
             $s . '</span>');
         exit;
     }
@@ -83,7 +83,7 @@ class ingame
                 $s = 'LiteAdmin';
                 break;
             case CS_WAECHTER:
-                $s = 'W&auml;chter';
+                $s = 'Wächter';
                 break;
             case CS_JACKASS:
                 $s = 'JackAss';

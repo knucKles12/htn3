@@ -16,7 +16,7 @@ class cboard
             '\' AND relative LIKE \'-1\' ORDER BY time ASC;');
         $cnt = mysql_num_rows($result);
         if ($cnt == 0)
-            echo '<p>Es gibt keine Eintr&auml;ge in diesem Ordner.</p>' . "\n";
+            echo '<p>Es gibt keine EintrÃ¤ge in diesem Ordner.</p>' . "\n";
         else
         {
             if ($admin)
@@ -24,7 +24,7 @@ class cboard
                     '" method="post">' . "\n";
             echo '<table>' . "\n";
             echo '<tr>' . LF . '<th>Titel</th>' . LF . '<th>Autor</th>' . LF .
-                '<th>Datum</th>' . LF . '<th>Ge&auml;ndert</th>' . LF . '<th>Antworten</th>' . "\n";
+                '<th>Datum</th>' . LF . '<th>GeÃ¤ndert</th>' . LF . '<th>Antworten</th>' . "\n";
             if ($admin)
                 echo '<th>Markieren</th>' . "\n";
             echo '</tr>' . "\n";
@@ -88,14 +88,14 @@ class cboard
             {
                 echo '<tr id="cluster-board-folder' . ($boxid + 1) . '-confirm">' . "\n";
                 echo '<td colspan="6"><select name="axion">';
-                echo '<option value="delete">Löschen</option>';
+                echo '<option value="delete">Lï¿½schen</option>';
                 if ($boxid != 0)
                     echo '<option value="folder1">In Ordner 1 verschieben</option>';
                 if ($boxid != 1)
                     echo '<option value="folder2">In Ordner 2 verschieben</option>';
                 if ($boxid != 2)
                     echo '<option value="folder3">In Ordner 3 verschieben</option>';
-                echo '</select> <input type="submit" value="Ausführen" /></td>' . LF . '</tr>' .
+                echo '</select> <input type="submit" value="Ausfï¿½hren" /></td>' . LF . '</tr>' .
                     "\n";
             }
             echo '</table>';

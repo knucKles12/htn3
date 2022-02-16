@@ -12,38 +12,38 @@ $db = $dbpdo->get_db();
 FILLCOUNTRY by Schnitzel & sofalord from fillcountry by erazorlll
 
 Funktionen:
-Dieses Script füllt einfach eure Länder mit herrenlosen PCs die ihre Werte (CPU, Ram, usw.) durch den Zufall erhalten.
-Weiter können 0-Punkte oder 1024-Punkte PC's eingefügt werden
+Dieses Script fï¿½llt einfach eure Lï¿½nder mit herrenlosen PCs die ihre Werte (CPU, Ram, usw.) durch den Zufall erhalten.
+Weiter kï¿½nnen 0-Punkte oder 1024-Punkte PC's eingefï¿½gt werden
 
 
 History:
 <0.4>
-- implementierung der data/static/country_data.inc.php um alle länder mitreinzubekommen.
-- $dateiname um nich jedem xbilibigen zugriff zu gewähren :D
+- implementierung der data/static/country_data.inc.php um alle lï¿½nder mitreinzubekommen.
+- $dateiname um nich jedem xbilibigen zugriff zu gewï¿½hren :D
 
 <0.3>
 - alles in einem
-- pc's löschen rausgenommen
-- schnitzel random pc script verbessrung (abhängigkeiten)
+- pc's lï¿½schen rausgenommen
+- schnitzel random pc script verbessrung (abhï¿½ngigkeiten)
 
 <0.2>
 - yeah endlich ein gescheiter Auswahlbereich (Design, Aufbau)
-- Länder zu 25/50/75/100 Prozent füllen
-- PCs wieder löschen
+- Lï¿½nder zu 25/50/75/100 Prozent fï¿½llen
+- PCs wieder lï¿½schen
 - Bugfix
 
-- HiJack Abhängigkeits-Check bleibt noch ausgebaut (ist eh sehr sehr unwarscheinlich das ein PC alle Voraussetzungen erfüllt, vorher gewinn ich im Loto ;) )
+- HiJack Abhï¿½ngigkeits-Check bleibt noch ausgebaut (ist eh sehr sehr unwarscheinlich das ein PC alle Voraussetzungen erfï¿½llt, vorher gewinn ich im Loto ;) )
 
 <0.1.1>
 - Punkte werden gleich mitberechnet
-- HiJack Abhängigkeits-Check erstmal wieder ausgebaut (kommt in der nächsten Version)
-- 2 Variablen verändert
-- Kommentare hinzugefügt
+- HiJack Abhï¿½ngigkeits-Check erstmal wieder ausgebaut (kommt in der nï¿½chsten Version)
+- 2 Variablen verï¿½ndert
+- Kommentare hinzugefï¿½gt
 
 <0.1>
-- IP-Überprüfung
-- HiJack-Prüfung (MalwareKit ausgebaut? Cpu? Ram? usw.)
-- 2 Extra-Dateien für 0-Punkte und 1024-Punkte PCs
+- IP-ï¿½berprï¿½fung
+- HiJack-Prï¿½fung (MalwareKit ausgebaut? Cpu? Ram? usw.)
+- 2 Extra-Dateien fï¿½r 0-Punkte und 1024-Punkte PCs
 
 <0.1 PreAlpha>
 - der ganze Code
@@ -59,7 +59,7 @@ mysql_select_db($database_prefix.$database_suffix);
 mt_srand();
 
 $aip=null;
-#<------------ den ganzen Ländern die IPs zuweisen------------>
+#<------------ den ganzen Lï¿½ndern die IPs zuweisen------------>
 if(isset($_POST['name'])) {
 $aip = $countrys[$_POST['name']]['subnet'];
 }
@@ -71,11 +71,11 @@ mysql_query("DELETE FROM pcs WHERE owner = '0' AND owner_name = ''");
 
     $num3 = mysql_affected_rows();
       if ($num3>0)
-         echo "<p><b>Alle herrenlosen PCs wurden gelöscht!</b><br /></p>";
+         echo "<p><b>Alle herrenlosen PCs wurden gelï¿½scht!</b><br /></p>";
       else
       {
-      echo "<p>Leider konnten die PC's nicht gelösch worden.<br><br>";	
-      echo "Das kann daran liegen dass das Subnet bereits leer sind.<br />Sonst könnte es daran liegen dass MySQL nicht läuft oder die Tabellen nicht existieren.<a href=\"$dateiname\">Zurück</a></p>";
+      echo "<p>Leider konnten die PC's nicht gelï¿½sch worden.<br><br>";	
+      echo "Das kann daran liegen dass das Subnet bereits leer sind.<br />Sonst kï¿½nnte es daran liegen dass MySQL nicht lï¿½uft oder die Tabellen nicht existieren.<a href=\"$dateiname\">Zurï¿½ck</a></p>";
       }
 }
 elseif ($aip>0) {
@@ -162,25 +162,25 @@ elseif ($aip>0) {
     {
     	if ($fehler_counter=='')
     	{
-    		echo "<p><b>Das Land ".$countrys[$land]['name']." wurde mit ".$counter." PCs gefüllt!</b><br /></p>";
+    		echo "<p><b>Das Land ".$countrys[$land]['name']." wurde mit ".$counter." PCs gefï¿½llt!</b><br /></p>";
     	}
     	else
     	{
-    		echo "<p><b>Das Land ".$countrys[$land]['name']." wurde mit ".$counter." PCs gefüllt!<br />".$fehler_counter++." PC's konnten nicht eingefügt werden</b></p>";
+    		echo "<p><b>Das Land ".$countrys[$land]['name']." wurde mit ".$counter." PCs gefï¿½llt!<br />".$fehler_counter++." PC's konnten nicht eingefï¿½gt werden</b></p>";
     	}
     		
     }
     else
     {
-      echo "<p>Leider konnte das Land nicht mit PCs gefüllt werden.<br><br>";	
-      echo "Das kann daran liegen dass das Subnet bereits gefüllt wurde.<br />Sonst könnte es daran liegen dass MySQL nicht läuft oder die Tabellen nicht existieren.<a href=\"$dateiname\">Zurück</a></p>";
+      echo "<p>Leider konnte das Land nicht mit PCs gefï¿½llt werden.<br><br>";	
+      echo "Das kann daran liegen dass das Subnet bereits gefï¿½llt wurde.<br />Sonst kï¿½nnte es daran liegen dass MySQL nicht lï¿½uft oder die Tabellen nicht existieren.<a href=\"$dateiname\">Zurï¿½ck</a></p>";
     }
 }
 echo'
-<div id="settings-settings"><h3>Subnetze füllen</h3>
+<div id="settings-settings"><h3>Subnetze fï¿½llen</h3>
 <p>
 <form action="../user.php" method="POST">
-<p><b>Wählen sie ein Land aus:</b></p>';
+<p><b>Wï¿½hlen sie ein Land aus:</b></p>';
 
   //print_r(array_keys ($countrys));
 
@@ -191,7 +191,7 @@ while (list ($key) = each ($countrys)) {
 echo '</select></p>';
 echo'
 
-    <p><b>Welche Art von PC\'s sollen aufgefüllt werden?</b></p>
+    <p><b>Welche Art von PC\'s sollen aufgefï¿½llt werden?</b></p>
     <p>
     <select size="1" name="pc_art">
     <option value="0">0 Pkt PCs</option>
@@ -199,7 +199,7 @@ echo'
     <option value="1024">1024 Pkt PCs</option>
   </select></p>
   <p>
-  <p><b>Wie viel Prozent sollen gefüllt werden?</b></p>
+  <p><b>Wie viel Prozent sollen gefï¿½llt werden?</b></p>
   <p><select size="1" name="bip">
   <option value="64">25%</option>
   <option value="127">50%</option>
@@ -208,7 +208,7 @@ echo'
   </select></p>
 <input type="hidden" name="a" value="adminaufgaben">
 <input type="hidden" name="sid" value='.$sid.'>
-  <p><input type="submit" value="F&uuml;llen" name="aschick"><input type="reset" value="Zurücksetzen" name="B2"></p>
+  <p><input type="submit" value="FÃ¼llen" name="aschick"><input type="reset" value="Zurï¿½cksetzen" name="B2"></p>
 </form>
 </p>
 </div>
@@ -217,10 +217,10 @@ echo'
 <form action="../user.php" method="POST">
 <input type="hidden" name="a" value="adminaufgaben">
 <input type="hidden" name="sid" value='.$sid.'>
-<p><b>Willst du alle herrenlosen PCs löschen?</b></p>
+<p><b>Willst du alle herrenlosen PCs lï¿½schen?</b></p>
 
 <p><input type="radio" value="1" name="delja">Ja<br /></p>
-<p><input type="submit" value="L&ouml;schen" name="baschick"><input type="reset" value="Zurücksetzen" name="B3"></form></p></div>
+<p><input type="submit" value="LÃ¶schen" name="baschick"><input type="reset" value="Zurï¿½cksetzen" name="B3"></form></p></div>
 ';
 
 

@@ -91,7 +91,7 @@ switch ($action)
 
         if ($usr['stat'] > 1)
             $statx = '<tr>' . LF . '<th>Dein Status:</th>' . LF .
-                '<td>privilegiert<br />F&uuml;r die Sonderfunktionen rufe die Info-Seite eines Users auf!</td>' .
+                '<td>privilegiert<br />Für die Sonderfunktionen rufe die Info-Seite eines Users auf!</td>' .
                 LF . '</tr>' . "\n";
         if ($usr['stat'] == 1000)
             $statx = '<tr>' . LF . '<th>Dein Status:</th>' . LF . '<td>King</td>' . LF .
@@ -139,11 +139,11 @@ switch ($action)
         {
         #$usessl=($usr['usessl']=='yes' ? 'checked="checked" ' : 'no');
         #$usessl='<input type="checkbox" value="yes" name="usessl" '.$usessl.'/>';
-        $usessl='<em>Diese Funktion steht in K&uuml;rze f&uuml;r alle Extended Account-User zur Verf&uuml;gung</em>';
+        $usessl='<em>Diese Funktion steht in Kürze für alle Extended Account-User zur Verfügung</em>';
         }
         else 
         {
-        $usessl='<em>Diese Funktion steht nur in Extended Accounts zur Verf&uuml;gung</em>';
+        $usessl='<em>Diese Funktion steht nur in Extended Accounts zur Verfügung</em>';
         }
         $usessl.="\n";*/
 
@@ -168,7 +168,7 @@ switch ($action)
                 '/>
     URL des Bildes: <a href="' . $url . '">' . $url . '</a>';
         } else
-            $usrimg = '<em>Diese Funktion steht nur in Extended Accounts zur Verf&uuml;gung!</em>';
+            $usrimg = '<em>Diese Funktion steht nur in Extended Accounts zur Verfügung!</em>';
 
         echo $notif . '<div id="settings-settings">
   <h3>' . $usr['name'] . '</h3>
@@ -181,7 +181,7 @@ switch ($action)
   <tr id="settings-settings-gender">
   <th>Geschlecht:</th>
   <td><input type="radio" name="sex" value="m" id="sm"' . $m .
-            ' />M&auml;nnlich <input type="radio" name="sex" value="w" id="sw"' . $w .
+            ' />Männlich <input type="radio" name="sex" value="w" id="sw"' . $w .
             ' />Weiblich <input type="radio" name="sex" value="x" id="sx"' . $x .
             ' />Keine Angabe</td>
   </tr>
@@ -214,12 +214,12 @@ switch ($action)
             '</td>
   </tr>
   <tr id="settings-settings-mail-signature">
-  <th>Signatur f&uuml;r Mails (max. 255 Zeichen):</th>
+  <th>Signatur für Mails (max. 255 Zeichen):</th>
   <td><textarea name="sig_mails" rows="4" cols="30">' . $usr['sig_mails'] .
             '</textarea></td>
   </tr>
   <tr id="settings-settings-board-signature">
-  <th>Signatur f&uuml;r Cluster-Board (max. 255 Zeichen):</th>
+  <th>Signatur für Cluster-Board (max. 255 Zeichen):</th>
   <td><textarea name="sig_board" rows="4" cols="30">' . $usr['sig_board'] .
             '</textarea></td>
   </tr>
@@ -227,7 +227,7 @@ switch ($action)
   <th>&raquo;Posteingang voll&laquo;-Nachricht:</th>
   <td><input type="text" value="' . $usr['inbox_full'] .
             '" name="inbox_full" maxlength="250" /><br />
-  Wenn dein Posteingang voll ist, erh&auml;lt ein User, der dir eine Nachricht schicken will, diese Meldung</td>
+  Wenn dein Posteingang voll ist, erhält ein User, der dir eine Nachricht schicken will, diese Meldung</td>
   </tr>
   <tr id="settings-settings-ipcheck">
   <th>Session an IP-Adresse binden:</th>
@@ -239,7 +239,7 @@ switch ($action)
   </tr>';
 
         /*<!--<tr id="settings-settings-usessl">
-        <th>SSL-Verschl&uuml;sselte Verbindung:</th>
+        <th>SSL-Verschlüsselte Verbindung:</th>
         <td>'.$usessl.'</td>
         </tr>-->*/
 
@@ -266,7 +266,7 @@ switch ($action)
     </tr>';
         }
         echo '<tr id="settings-settings-delete-account">
-  <th>Account l&ouml;schen:</th>
+  <th>Account löschen:</th>
   <td><input type="checkbox" value="yes" name="delete_account" /></td>
   </tr>
   ' . $statx . '
@@ -278,18 +278,18 @@ switch ($action)
   </div>
   
   <div id="settings-mail">
-  <h3>Email-Adresse &auml;ndern</h3>
+  <h3>Email-Adresse ändern</h3>
   <form action="user.php?a=setmailaddy&amp;sid=' . $sid . '" method="post">
   <table>
   <tr id="settings-mail-address">
   <th>Deine Email-Adresse:</th>
   <td><input type="text" name="email" value="' . $usr['email'] . '" /><br />
-  Die Email-Adresse ist f&uuml;r andere Benutzer nicht sichtbar</td>
+  Die Email-Adresse ist für andere Benutzer nicht sichtbar</td>
   </tr>
   <tr id="settings-mail-password">
   <th>Dein Account-Passwort:</th>
   <td><input name="pwd" type="password" /><br />
-  Bitte zur Best&auml;tigung eingeben.</td>
+  Bitte zur Bestätigung eingeben.</td>
   </tr>
   <tr id="settings-mail-confirm">
   <td colspan="2"><input type="submit" value="Speichern" /></td>
@@ -300,7 +300,7 @@ switch ($action)
 
         echo '<div id="settings-password">
   <form action="user.php?a=newpwd&amp;sid=' . $sid . '" method="post">
-  <h3>Passwort &auml;ndern (Sonder-Funktion)</h3>
+  <h3>Passwort ändern (Sonder-Funktion)</h3>
   <table>
   <tr id="settings-password-password">
   <th>Altes Passwort:</th>
@@ -329,23 +329,23 @@ switch ($action)
 
         if ($_POST['delete_account'] == 'yes')
         {
-            echo '<html><head><title>Account l&ouml;schen</title></head><body style="font-family:arial;">
+            echo '<html><head><title>Account löschen</title></head><body style="font-family:arial;">
     <br /><br /><br /><br /><hr>
     <b>Dir wurde eine Email zugeschickt (' . $usr['email'] .
-                '), in der du die L&ouml;schung des Accounts noch einmal best&auml;tigen musst!
+                '), in der du die Löschung des Accounts noch einmal bestätigen musst!
     <br /><br />Du wurdest au&szlig;erdem ausgeloggt!</b>
     <hr>
     </body></html>';
             $code = $gres->random_string(16);
 
             $body = 'Hallo ' . $usr['name'] . '!' . LF . "\n" .
-                'Schade, dass du deinen Account bei www.hackthenet.org l�schen m�chtest!' . LF .
+                'Schade, dass du deinen Account bei www.hackthenet.org l�schen m�chtest!' . LF .
                 "\n";
             $body .= 'Wenn du dir ganz sicher bist, klicke auf den folgenden Link:' . "\n";
             $body .= 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) .
                 '/pub.php?a=deleteaccount&code=' . $code;
 
-            if (!@mail($usr['email'], 'HackTheNet-Account l�schen?', $body,
+            if (!@mail($usr['email'], 'HackTheNet-Account l�schen?', $body,
                 'From: robot@hackthenet.org'))
             {
                 echo nl2br($body);
@@ -355,7 +355,7 @@ switch ($action)
             @unlink('data/login/' . $sid . '.txt');
         } else
         {
-            # Nicht Account l�schen sondern Settings speichern
+            # Nicht Account l�schen sondern Settings speichern
 
             $g = $_POST['sex'];
             if ($g == '')
@@ -404,12 +404,12 @@ switch ($action)
             if (strlen($sig_mails) > 255)
             {
                 $e = true;
-                $error .= 'Die Signatur f&uuml;r Mails darf maximal 255 Zeichen haben!';
+                $error .= 'Die Signatur für Mails darf maximal 255 Zeichen haben!';
             }
             if (strlen($sig_board) > 255)
             {
                 $e = true;
-                $error .= 'Die Signatur f&uuml;rs Cluster-Board darf maximal 255 Zeichen haben!';
+                $error .= 'Die Signatur fürs Cluster-Board darf maximal 255 Zeichen haben!';
             }
             if (strlen($inbox_full) > 255)
             {
@@ -444,14 +444,14 @@ switch ($action)
                 $usr['enable_usrimg'] = $enable_usrimg;
                 $usr['usrimg_fmt'] = $usrimg_fmt;
                 $ingame->saveuserdata();
-                header('Location: user.php?a=config&sid=' . $sid . '&ok=' . urlencode('Die &Auml;nderungen wurden gespeichert.'));
+                header('Location: user.php?a=config&sid=' . $sid . '&ok=' . urlencode('Die änderungen wurden gespeichert.'));
             } else
             {
                 site_header('Optionen');
                 body_start();
                 echo '<h2>Optionen</h2>';
                 echo '<div class="error">FEHLER:<br />' . $msg . '<br /><br />';
-                echo 'Aufgrund dieser Fehler wurden die &Auml;nderungen <i>nicht</i> &uuml;bernommen!</div>';
+                echo 'Aufgrund dieser Fehler wurden die änderungen <i>nicht</i> übernommen!</div>';
                 echo '</div>';
                 site_footer();
             }
@@ -464,7 +464,7 @@ switch ($action)
         $email = trim($_POST['email']);
         if (!$mail->check_email($email))
         {
-            $gres->simple_message('Bitte eine g&uuml;ltige Email-Adresse im Format xxx@yyy.zz angeben!');
+            $gres->simple_message('Bitte eine gültige Email-Adresse im Format xxx@yyy.zz angeben!');
         } else
         {
             $pwd = trim($_POST['pwd']);
@@ -494,7 +494,7 @@ switch ($action)
             if ($a['gender'] == 'x')
                 $geschl = '';
             elseif ($a['gender'] == 'm')
-                $geschl = 'M&auml;nnlich';
+                $geschl = 'Männlich';
             elseif ($a['gender'] == 'w')
                 $geschl = 'Weiblich';
             if ($geschl != '')
@@ -592,14 +592,14 @@ switch ($action)
                         '">Account erweitert sperren</a>';
                 }
                 $descr .= '<br /><a href="secret.php?a=delacc1&amp;sid=' . $sid . '&amp;user=' .
-                    $a['id'] . '">Account l&ouml;schen</a>';
+                    $a['id'] . '">Account löschen</a>';
                 $descr .= '<br /><a href="secret.php?a=login_ips&amp;sid=' . $sid . '&amp;user=' .
                     $a['id'] . '">Login-IPs untersuchen</a>';
             }
 
             if ($usr['bigacc'] == 'yes')
                 $bigacc = '| <a href="abook.php?sid=' . $sid . '&amp;action=add&amp;user=' . $index .
-                    '">User zum Adressbuch hinzuf&uuml;gen</a>';
+                    '">User zum Adressbuch hinzufügen</a>';
 
             $attack = '(keine Info)';
             $attack = 'Letztes Login: <i>' . $gres->nicetime3($a['login_time']) .
@@ -678,9 +678,9 @@ switch ($action)
             {
                 $dbc->db_query('UPDATE users SET password=\'' . md5($pwd) . '\' WHERE id=' . $usrid .
                     ' LIMIT 1');
-                $gres->simple_message('Passwort ge&auml;ndert!');
+                $gres->simple_message('Passwort geändert!');
             }
-            else $gres->simple_message('Die beiden Passw&ouml;rter stimmen nicht &Uuml;berein!');
+            else $gres->simple_message('Die beiden Passwörter stimmen nicht überein!');
         }
         else $gres->simple_message('Altes Passwort falsch!');
         break;

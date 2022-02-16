@@ -1,2 +1,2 @@
-Das Malware Kit ist sozusagen die Brutst&auml;tte der Angriffswaffen. Welche Waffen hier
-zur Verf&uuml;gung stehen, h&auml;ngt von der Versionsnummer des Malware Kits ab.
+Das Malware Kit ist sozusagen die Brutstätte der Angriffswaffen. Welche Waffen hier
+zur Verfügung stehen, hängt von der Versionsnummer des Malware Kits ab.

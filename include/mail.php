@@ -96,7 +96,7 @@ class mail
             '" method="post" name="newmail">
   <table>
   <tr id="messages-compose-recipient">
-  <th>Empf&auml;nger:</th>
+  <th>Empfänger:</th>
   <td><input name="recipient" type="text" value="' . $recip . '" /></td>
   </tr>
   ' . $bigacc . '
@@ -190,9 +190,9 @@ class mail
                 if ($box == 'in')
                     $t = 'Absender';
                 elseif ($box == 'out')
-                    $t = 'Empf&auml;nger';
+                    $t = 'Empfänger';
                 else
-                    $t = 'Absender/Empf&auml;nger';
+                    $t = 'Absender/Empfänger';
                 $msg = $t . ':' . "\t" . $partner['name'] . "\r" . LF . 'Zeit:' . "\t" . "\t" .
                     nicetime($data['time']) . "\r" . LF . 'Betreff:' . "\t" . $data['subject'] . "\r" .
                     LF . "\r" . LF . $data['text'];

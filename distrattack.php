@@ -8,7 +8,7 @@ $action=$_REQUEST['page'];
 
 if($usr['da_avail']!='yes') 
 {
-  simple_message('Noch nicht verf&uuml;gbar!'); exit; 
+  simple_message('Noch nicht verfügbar!'); exit; 
 }
 
 # Cluster-Daten lesen:
@@ -115,7 +115,7 @@ switch($action)
           if($initusr['id']==$usrid || $usr['clusterstat']==CS_ADMIN) echo '<a href="distrattack.php?page=cancel&amp;sid='.$sid.'&amp;da='.$item['id'].'" onclick="return confirm_abort();">Abbrechen</a>,'.LF.'<a href="distrattack.php?page=exec&amp;sid='.$sid.'&amp;da='.$item['id'].'">Angriff!</a>, '."\n";
           echo '<a href="distrattack.php?page=join&amp;sid='.$sid.'&amp;da='.$item['id'].'">Mitmachen</a>';
         }
-        else echo 'Die DA ist noch auf keinem deiner PCs verf&uuml;gbar.';
+        else echo 'Die DA ist noch auf keinem deiner PCs verfügbar.';
         echo '</td>'.LF.'</tr>'."\n";
       }
     }
@@ -129,7 +129,7 @@ switch($action)
   if(isavailh('da',$pc)!=true) exit;
   echo '<div class="tip">
   <h3>Info</h3>
-  <p>Du erstellst jetzt eine Art Einladung. Andere User aus deinem Cluster k&ouml;nnen sich dieser Einladung anschlie&szlig;en.<br />
+  <p>Du erstellst jetzt eine Art Einladung. Andere User aus deinem Cluster können sich dieser Einladung anschlie&szlig;en.<br />
   Sobald du es bestimmst, wird der Feind mit der gesammelten Power aller Teilnehmer angegriffen!</p>
   </div>
   
@@ -142,7 +142,7 @@ switch($action)
   <td><input type="text" name="ip" value="10.47." /></td>
   </tr>
   <tr id="cluster-create-distributed-attack-target">
-  <th>Zerst&ouml;rungs-Ziel:</th>
+  <th>Zerstörungs-Ziel:</th>
   <td><input name="t" value="cpu" checked="checked" type="radio" /> Prozessor<br />
   <input name="t" value="av" type="radio" /> Antivirus-Programm<br />
   <input name="t" value="fw" type="radio" /> Firewall</td>
@@ -166,9 +166,9 @@ switch($action)
   if(eregi('^10\\.47\\.([0-9]{2,3})\\.([0-9]{1,3})$',$ip)==true) 
   {
     $target=getpc(substr($ip,6),'ip');
-    if($target==false) $e.='Ung&uuml;ltige Ziel-Adresse: Der PC existiert nicht!<br />';
+    if($target==false) $e.='Ungültige Ziel-Adresse: Der PC existiert nicht!<br />';
   }
-  else $e.='Ung&uuml;ltige Ziel-Adresse: IP-Adresse muss in der Form 10.47.x.x vorliegen!<br />';
+  else $e.='Ungültige Ziel-Adresse: IP-Adresse muss in der Form 10.47.x.x vorliegen!<br />';
   switch($t) 
   {
     case 'cpu': break;
@@ -183,7 +183,7 @@ switch($action)
   {
     $country=getcountry('id',$target['country']);
     $credits=$country['in']*20;
-    if($pc['credits']<$credits) $e.='Du hast nicht gen&uuml;gend Geld, um die Einfuhr-Geb&uuml;hr von '.$credits.' Credits nach '.$country['name'].', dem Standort von 10.47.'.$target['ip'].', zu bezahlen!';
+    if($pc['credits']<$credits) $e.='Du hast nicht genügend Geld, um die Einfuhr-Gebühr von '.$credits.' Credits nach '.$country['name'].', dem Standort von 10.47.'.$target['ip'].', zu bezahlen!';
     else 
     {
       $code=random_string(10);
@@ -196,12 +196,12 @@ switch($action)
       <td>10.47.'.$target['ip'].'</td>
       </tr>
       <tr>
-      <th>Eigent�mer:</th>
+      <th>Eigent�mer:</th>
       <td><a href="user.php?page=info&amp;sid='.$sid.'&amp;user='.$target['owner'].'">'.$owner['name'].'</a></td>
       </tr>
       <tr>
       <th>Kosten:</th>
-      <td>F&uuml;r die Einfuhr nach '.$country['name'].' fallen '.$credits.' Credits an.<br />
+      <td>Für die Einfuhr nach '.$country['name'].' fallen '.$credits.' Credits an.<br />
       Diese werden schon jetzt vom Konto deines PCs 10.47.'.$pc['ip'].' ('.$pc['name'].') abgezogen.</td>
       </tr>
       <tr id="cluster-create-distributed-attack2-confirm">
@@ -223,7 +223,7 @@ switch($action)
   
   $fn=$DATADIR.'/tmp/da_'.$_POST['code'].'.txt';
   if(file_exists($fn)==false) exit;
-  echo '<div class="ok"><h3>Aktion ausgef&uuml;hrt</h3>'.LF.'<p>Die Distributed Attack wurde erstellt.</p>'.LF.'</div>'."\n";
+  echo '<div class="ok"><h3>Aktion ausgeführt</h3>'.LF.'<p>Die Distributed Attack wurde erstellt.</p>'.LF.'</div>'."\n";
   list($target,$credits,$item)=explode('|',file_get($fn));
   @unlink($fn);
   db_query('INSERT INTO distr_attacks VALUES(\'0\', \''.mysql_escape_string($clusterid).'\', \''.$pcid.'\', \''.$usrid.'\', \''.mysql_escape_string($target).'\', \''.mysql_escape_string($item).'\');');
@@ -243,7 +243,7 @@ switch($action)
   {
     echo '<div id="cluster-distributed-attack-join-start">'."\n";
     echo '<h3>Mitmachen</h3>'."\n";
-    echo '<p><strong>W&auml;hle die PCs, mit denen du bei der DA mithelfen willst:</strong></p>'."\n";
+    echo '<p><strong>Wähle die PCs, mit denen du bei der DA mithelfen willst:</strong></p>'."\n";
     echo '<p>Das Mitmachen kostet 1000 Credits pro PC. Nur PCs mit mindestens 1000 Credits im BucksBunker und solche, die noch nicht an der DA teilnehmen, werden angezeigt.</p>'."\n";
     echo '<form action="distrattack.php?sid='.$sid.'&amp;da='.$a['id'].'&amp;page=join2" method="post">'."\n";
     echo '<table>';
@@ -275,12 +275,12 @@ switch($action)
     echo '</table>'."\n";
     if($gcnt>0)
     {
-      echo '<p>W&auml;hlen: <select name="sellist" onchange="da_check(this)"><option value="all">Alle</option><option value="75">75%</option><option value="50">50%</option><option value="25">25%</option><option value="0">keine</option><option value="userdef">Anzahl:</option></select>
+      echo '<p>Wählen: <select name="sellist" onchange="da_check(this)"><option value="all">Alle</option><option value="75">75%</option><option value="50">50%</option><option value="25">25%</option><option value="0">keine</option><option value="userdef">Anzahl:</option></select>
       <input type="text" name="howmuch" value="" size="3" maxlength="3"/><input type="button" value="OK" onclick="da_check(this)" /></p>'."\n";
       echo '<p><input type="submit" value=" Weiter " /></p>'."\n";
     }
     else
-    echo '<p><strong>Leider erf&uuml;llt keiner deiner PCs die Bedingungen, um an dieser DA teilzunehmen!</strong></p>'."\n";
+    echo '<p><strong>Leider erfüllt keiner deiner PCs die Bedingungen, um an dieser DA teilzunehmen!</strong></p>'."\n";
     echo '</form>'.LF.'</div>'."\n";
   }
   
@@ -289,7 +289,7 @@ switch($action)
   case 'join2': // -------------------------------- JOIN FINAL -------------------------------
   
   // Eine Lockfile sicher erzeugen, sodass das Anlegen nicht parallel geschieht.
-  // Sollte die Lockfile nicht angelegt werden k�nnen, wird das selbe bis zu zehn
+  // Sollte die Lockfile nicht angelegt werden k�nnen, wird das selbe bis zu zehn
   // Mal weiter probiert, sollte es dann noch fehlschlagen, wird das Script
   // beendet
   /*$uniqueFileName = $sidfile.getmypid().microtime();
@@ -333,11 +333,11 @@ switch($action)
     <p><a href="distrattack.php?page=list&amp;sid='.$sid.'">Weiter</a></p>';
   }
   
-  // Die oben angelegt Lockfile wieder l�schen und damit anderen Anfragen
+  // Die oben angelegt Lockfile wieder l�schen und damit anderen Anfragen
   // Platz machen
   /*if (!unlink($sidfile.'.dalock')) 
   {
-    die('Konnte Upgradeanfragen nicht serialisieren: Sperrdatei konnte nicht gel�scht werden. Die Anfrage wurde jedoch bearbeitet.');
+    die('Konnte Upgradeanfragen nicht serialisieren: Sperrdatei konnte nicht gel�scht werden. Die Anfrage wurde jedoch bearbeitet.');
   }*/
   
   break;
@@ -347,8 +347,8 @@ switch($action)
   $r=db_query('SELECT id FROM distr_attacks WHERE cluster='.mysql_escape_string($clusterid).';');
   $cnt=mysql_num_rows($r);
   
-  echo '<p><strong>W&auml;hle die PCs, mit denen du an allen DAs teilnehmen m&ouml;chtest!</strong><br />
-  Es werden nur PCs angezeigt, auf denen die DA und gen&uuml;gend Geld vorhanden ist!</p>
+  echo '<p><strong>Wähle die PCs, mit denen du an allen DAs teilnehmen möchtest!</strong><br />
+  Es werden nur PCs angezeigt, auf denen die DA und genügend Geld vorhanden ist!</p>
   <form action="distrattack.php?page=joinall2&amp;sid='.$sid.'" method="post">
   <table>';
   
@@ -379,12 +379,12 @@ switch($action)
   echo '</table>'."\n";
   if($gcnt>0)
   {
-    echo '<p>W&auml;hlen: <select name="sellist" onchange="da_check(this)"><option value="all">Alle</option><option value="75">75%</option><option value="50">50%</option><option value="25">25%</option><option value="0">keine</option><option value="userdef">Anzahl:</option></select>
+    echo '<p>Wählen: <select name="sellist" onchange="da_check(this)"><option value="all">Alle</option><option value="75">75%</option><option value="50">50%</option><option value="25">25%</option><option value="0">keine</option><option value="userdef">Anzahl:</option></select>
     <input type="text" name="howmuch" value="" size="3" maxlength="3"/><input type="button" value="OK" onclick="da_check(this)" /></p>'."\n";
     echo '<p><input type="submit" value=" Weiter " /></p>'."\n";
   }
   else
-  echo '<p><strong>Leider erf&uuml;llt keiner deiner PCs die Bedingungen, um an dieser DA teilzunehmen!</strong></p>'."\n";
+  echo '<p><strong>Leider erfüllt keiner deiner PCs die Bedingungen, um an dieser DA teilzunehmen!</strong></p>'."\n";
   echo '</form>'."\n";
   
   
@@ -393,7 +393,7 @@ switch($action)
   case 'joinall2': // -------------------------------- JOIN ALL FINAL -------------------------------
   
   // Eine Lockfile sicher erzeugen, sodass das Anlegen nicht parallel geschieht.
-  // Sollte die Lockfile nicht angelegt werden k�nnen, wird das selbe bis zu zehn
+  // Sollte die Lockfile nicht angelegt werden k�nnen, wird das selbe bis zu zehn
   // Mal weiter probiert, sollte es dann noch fehlschlagen, wird das Script
   // beendet
   /*$uniqueFileName = $sidfile.getmypid().microtime();
@@ -437,11 +437,11 @@ switch($action)
   echo '<div class="ok"><h3>Angriff</h3>'.LF.'<p>Du bist dabei!</p>'.LF.'</div><br />
   <p><a href="distrattack.php?page=list&amp;sid='.$sid.'">Weiter</a></p>';
   
-  // Die oben angelegt Lockfile wieder l�schen und damit anderen Anfragen
+  // Die oben angelegt Lockfile wieder l�schen und damit anderen Anfragen
   // Platz machen
   /*if (!unlink($sidfile.'.dalock')) 
   {
-    die('Konnte Upgradeanfragen nicht serialisieren: Sperrdatei konnte nicht gel�scht werden. Die Anfrage wurde jedoch bearbeitet.');
+    die('Konnte Upgradeanfragen nicht serialisieren: Sperrdatei konnte nicht gel�scht werden. Die Anfrage wurde jedoch bearbeitet.');
   }*/
   
   break;
@@ -466,7 +466,7 @@ switch($action)
   case 'exec': // -------------------------------- EXECUTE -------------------------------
   
   // Eine Lockfile sicher erzeugen, sodass das Anlegen nicht parallel geschieht.
-  // Sollte die Lockfile nicht angelegt werden k�nnen, wird das selbe bis zu zehn
+  // Sollte die Lockfile nicht angelegt werden k�nnen, wird das selbe bis zu zehn
   // Mal weiter probiert, sollte es dann noch fehlschlagen, wird das Script
   // beendet
   /*$uniqueFileName = $sidfile.getmypid().microtime();
@@ -526,7 +526,7 @@ switch($action)
       )) 
       {
         
-        echo '<div class="error"><h3>N00b-Schutz</h3><p>Ziel zu schwach. Angriff nicht m�glich!</p></div>';
+        echo '<div class="error"><h3>N00b-Schutz</h3><p>Ziel zu schwach. Angriff nicht m�glich!</p></div>';
         createlayout_bottom();
         exit;
         
@@ -580,7 +580,7 @@ switch($action)
         echo '<div class="error"><h3>Fehlgeschlagen!</h3><p>Der Angriff war zu schwach und konnte so abgewehrt werden!</p></div><br />';
         $owner=getuser($remote['owner']);
         $msg='Die Distributed Attack auf 10.47.'.$remote['ip'].' (Besitzer: [usr='.$owner['id'].']'.$owner['name'].'[/usr]), an der du teilgenommen hast, war leider nicht erfolgreich!';
-        addsysmsg($owner['id'],'Von ' . $total . ' PCs von Spielern des Clusters [cluster='.$clusterid.']'.$cluster['code'].'[/cluster] wurde eine Distributed Attack gegen dich ausgef&uuml;hrt!<br />Sie konnte aber abgewehrt werden: Auf deinem PC 10.47.'.$remote['ip'].' ('.$remote['name'].') gab es keinen Schaden!');
+        addsysmsg($owner['id'],'Von ' . $total . ' PCs von Spielern des Clusters [cluster='.$clusterid.']'.$cluster['code'].'[/cluster] wurde eine Distributed Attack gegen dich ausgeführt!<br />Sie konnte aber abgewehrt werden: Auf deinem PC 10.47.'.$remote['ip'].' ('.$remote['name'].') gab es keinen Schaden!');
       }
       else 
       {
@@ -591,11 +591,11 @@ switch($action)
           savepc($a['target'],$remote);
         }
         $notif='Der Angriff war erfolgreich!!<br />'.
-        idtoname($a['item']).' wurde auf Level '.$lv.' zerst&ouml;rt!!';
+        idtoname($a['item']).' wurde auf Level '.$lv.' zerstört!!';
         echo '<div class="ok"><h3>Erfolg!</h3><p>'.$notif.'</p></div><br />';
         $name=getuser($remote['owner']);
-        $msg='Die Distributed Attack auf 10.47.'.$remote['ip'].' (Besitzer: [usr='.$remote['owner'].']'.$name['name'].'[/usr]), an der du teilgenommen hast, war erfolgreich!!<br />'.idtoname($a['item']).' wurde auf Level '.$lv.' zerst&ouml;rt!!';
-        addsysmsg($remote['owner'],'Von ' . $total . ' PCs von Spielern des Clusters [cluster='.$clusterid.']'.$cluster['code'].'[/cluster] wurde eine Distributed Attack gegen dich ausgef&uuml;hrt!<br />Sie war erfolgreich: Auf deinem PC 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde '.idtoname($a['item']).' auf '.$lv.' zerst&ouml;rt!');
+        $msg='Die Distributed Attack auf 10.47.'.$remote['ip'].' (Besitzer: [usr='.$remote['owner'].']'.$name['name'].'[/usr]), an der du teilgenommen hast, war erfolgreich!!<br />'.idtoname($a['item']).' wurde auf Level '.$lv.' zerstört!!';
+        addsysmsg($remote['owner'],'Von ' . $total . ' PCs von Spielern des Clusters [cluster='.$clusterid.']'.$cluster['code'].'[/cluster] wurde eine Distributed Attack gegen dich ausgeführt!<br />Sie war erfolgreich: Auf deinem PC 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde '.idtoname($a['item']).' auf '.$lv.' zerstört!');
       }
       
       $sended=array();
@@ -613,14 +613,14 @@ switch($action)
       
       db_query('DELETE FROM da_participants WHERE relative='.$i.';');
     }
-    else echo '<div class="error"><h3>Fehler</h3><p>Es m&uuml;ssen sich noch andere User dem Angriff anschlie&szlig;en!</p></div>';
+    else echo '<div class="error"><h3>Fehler</h3><p>Es müssen sich noch andere User dem Angriff anschlie&szlig;en!</p></div>';
   }
   
-  // Die oben angelegt Lockfile wieder l�schen und damit anderen Anfragen
+  // Die oben angelegt Lockfile wieder l�schen und damit anderen Anfragen
   // Platz machen
   /*if (!unlink($sidfile.'.dalock')) 
   {
-    die('Konnte Upgradeanfragen nicht serialisieren: Sperrdatei konnte nicht gel�scht werden. Die Anfrage wurde jedoch bearbeitet.');
+    die('Konnte Upgradeanfragen nicht serialisieren: Sperrdatei konnte nicht gel�scht werden. Die Anfrage wurde jedoch bearbeitet.');
   }*/
   
   break;

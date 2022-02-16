@@ -46,7 +46,7 @@ case 'cluster': $dat=getcluster($_REQUEST['id']); break;
 
 $title='htn_server'.$server.'.'.$_REQUEST['type'].'s.'.$dat['id'];
 
-if($usr['stat']==1000) $hw='Du bist Administrator und darfst alles ansehen und &auml;ndern!'; else $hw='Du darfst dir alles angucken, aber nichts &auml;ndern!';
+if($usr['stat']==1000) $hw='Du bist Administrator und darfst alles ansehen und ändern!'; else $hw='Du darfst dir alles angucken, aber nichts ändern!';
 
 $javascript='<script type="text/javascript">
 function calc_ts() {
@@ -73,7 +73,7 @@ echo '<div class="content" id="secret">
 <p>'.$hw.'</p><br />
 <form action="secret.php?a=save&amp;sid='.$sid.'&amp;type='.$_REQUEST['type'].'&amp;id='.$_REQUEST['id'].'" method="post">
 <table>
-<tr><th>ID</th><th>Wert</th><th>Erkl&auml;rung</th></tr>';
+<tr><th>ID</th><th>Wert</th><th>Erklärung</th></tr>';
 
 while(list($bez,$val)=each($dat)) {
   echo '<tr>';
@@ -288,7 +288,7 @@ echo '<h3>Cluster-Board von '.$cluster['code'].'</h3><br />';
 function listboard($boxid) {
 global $sid,$cluster,$cix;
 echo '<table cellpadding=3 style="font-size:10pt;">';
-echo '<tr class=head><td><b>Titel</b></td><td><b>Autor</b></td><td><b>Datum</b></td><td><b>Ge&auml;ndert</b></td><td><b>Antw.</b></td>';
+echo '<tr class=head><td><b>Titel</b></td><td><b>Autor</b></td><td><b>Datum</b></td><td><b>Geändert</b></td><td><b>Antw.</b></td>';
 echo '</tr>';
 
 $output='';
@@ -338,11 +338,11 @@ if($usr['stat']!=1000) simple_message('Das darf nur der KING!');
 createlayout_top('Admin');
 echo '<div class=content>
 <h2>Admin</h2>
-<h3>User l&ouml;schen</h3>
-<b>Wenn du wirklich den Account l&ouml;schen willst, dann klick auf den Button!</b>
+<h3>User löschen</h3>
+<b>Wenn du wirklich den Account löschen willst, dann klick auf den Button!</b>
 <br /><form action="secret.php?a=delacc2&amp;sid='.$sid.'"  method="post">
 <input type=hidden name="user" value="'.$_REQUEST['user'].'">
-<input type=submit value=" ACCOUNT L&Ouml;SCHEN ">
+<input type=submit value=" ACCOUNT LöSCHEN ">
 </form>
 </div>';
 createlayout_bottom();
@@ -382,7 +382,7 @@ case 'lockaccex':  // ----------------------------------- LOCK ACC EX ----------
   <form action="secret.php?a=lockaccex2&sid='.$sid.'&user='.$uid.'" method="post">
   <table>
   <tr><th>Acc:</th><td>'.$u['name'].' ('.$u['id'].')</td></tr>
-  <tr><th>Sperren bis:</th><td><input type="text" name="till" size="30" value="'.strftime('%x %X',time()+24*60*60).'"><br />0 eingeben f�r unbegrenzt</td></tr>
+  <tr><th>Sperren bis:</th><td><input type="text" name="till" size="30" value="'.strftime('%x %X',time()+24*60*60).'"><br />0 eingeben f�r unbegrenzt</td></tr>
   <tr><th>Grund:</th><td><input type="text" name="reason" size="30" value="'.$u['locked_reason'].' ('.$u['locked_by'].')"></td></tr>
   <tr><th colspan="2" align="right"><input type="submit" value=" Sperren! "></tr>
   </table>
@@ -430,7 +430,7 @@ echo 'seit '.nicetime($ts).' haben sich <strong>';
 $r=db_query('SELECT * FROM users WHERE login_time<='.$ts.' OR (locked=\'yes\' AND locked_till=0);');
 #$r2=db_query('SELECT * FROM users WHERE locked=\'yes\';');
 echo mysql_num_rows($r).'</strong> User nicht mehr eingeloggt oder sind gesperrt!<br>';
-#echo 'au�erdem sind '. mysql_num_rows($r2) . ' User gesperrt!<br>';
+#echo 'au�erdem sind '. mysql_num_rows($r2) . ' User gesperrt!<br>';
 
 #exit;
 
@@ -439,11 +439,11 @@ ignore_user_abort(0);
 
 
 while($data=mysql_fetch_assoc($r)):
-  /*mail($data['email'], 'Dein HackTheNet-Account wird bald gel�scht!',
+  /*mail($data['email'], 'Dein HackTheNet-Account wird bald gel�scht!',
   'Hallo '.$data[name].'!'.LF.'Du hast dich in deinen Account des browserbasierten Online-Spiels '.
   'HackTheNet ( http://www.hackthenet.org/ ) seit '.nicetime($data[login_time]).' nicht mehr '.
   'eingeloggt.'.LF.'Wenn du dich nicht bis zum 3. Juli, 24 Uhr mit den folgenden Daten einloggst, '.
-  'wird dein Account automatisch gel�scht!'.LF."\n".'Nickname: '.$data['name'].LF.'Passwort: '.$data['password'].LF.'Server: 1'.LF."\n".
+  'wird dein Account automatisch gel�scht!'.LF."\n".'Nickname: '.$data['name'].LF.'Passwort: '.$data['password'].LF.'Server: 1'.LF."\n".
   'MfG'.LF.'Das HackTheNet-Team',
   'From: HackTheNet <robot@hackthenet.org>');*/
   delete_account($data['id']);
@@ -503,19 +503,19 @@ $items=array('id'=>'interne Kennnummer','name'=>'Name', 'ads'=>'Werbung', 'diale
   'auctions'=>'Auktionsbetrug', 'bankhack'=>'Online-Banking', 'credits'=>'Credits',
   'owner'=>'Besitzer-Nummer', 'ip'=>'IP-Adresse', 'lmupd'=>'Zeit des letzten Geld-Updates',
   'country'=>'Land', 'points'=>'Punkte', 'code'=>'Code',
-  'money'=>'Verm&ouml;gen', 'tax'=>'Mitgliedsbeitrag', 'events'=>'Ereignisse',
+  'money'=>'Vermögen', 'tax'=>'Mitgliedsbeitrag', 'events'=>'Ereignisse',
   'infotext'=>'Beschreibung', 'logofile'=>'Logo-Datei', 'hp'=>'Homepage',
   'email'=>'Email', 'gender'=>'Geschlecht', 'birthday'=>'Geburtstag', 'clusterstat'=>'Cluster-Status',
   'cluster'=>'Cluster-ID','newmail'=>'Neue Messages','liu'=>'Letztes Post-Update', 'pcs'=>'Computer',
-  'stat'=>'Status (1000=king)','cm'=>'Cluster-Geld-&Uuml;berweisung', 'homepage'=>'Homepage',
-  'sid'=>'Session-ID', 'pacts'=>'Vertr&auml;ge', 'wohnort'=>'Wohnort',
+  'stat'=>'Status (1000=king)','cm'=>'Cluster-Geld-überweisung', 'homepage'=>'Homepage',
+  'sid'=>'Session-ID', 'pacts'=>'Verträge', 'wohnort'=>'Wohnort',
   'di'=>'Deaktiviertes Item', 'dt'=>'Deaktiviert bis', 'la'=>'letzter Angriff',
   'blocked'=>'PC blockiert bis', 'lpu'=>'letztes Punkte-Update', 'locked'=>'Account gesperrt',
   'lastmail'=>'letzte Mail', 'bigacc'=>'Extended Account?',  'sig_mails'=>'Mail-Signatur',
-  'sig_board'=>'Board-Signatur', 'ref_pc'=>'PC f&uuml;r Geld aus Ref-Prog.',
+  'sig_board'=>'Board-Signatur', 'ref_pc'=>'PC für Geld aus Ref-Prog.',
   'ref_mode'=>'Ref-Prog.-Modus (0=normal,1=credits)', 'ref_users'=>'geworbene User',
   'login_time'=>'letztes Login','lrh'=>'letztes REMOTE HIJACK', 'password'=>'Passwort',
-  'lic'=>'letzte Pr&uuml;fung des Posteingangs', 'ref_by'=>'Geworben von', 'stylesheet'=>'Style',
+  'lic'=>'letzte Prüfung des Posteingangs', 'ref_by'=>'Geworben von', 'stylesheet'=>'Style',
   'inbox_full'=>'Posteingang voll-Nachricht','avatar'=>'Userlogo-Datei','rank'=>'Platz in der Rangliste',
   'box1'=>'Ordner 1 (Board)', 'box2'=>'Ordner 2 (Board)','box3'=>'Ordner 3 (Board)',
   'acceptnew'=>'Neue Mitglieder?','da_avail'=>'Distributed Attack?','sid_ip'=>'IP-Adresse zur SID',

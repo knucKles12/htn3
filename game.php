@@ -42,7 +42,7 @@ switch ($action)
 		
 		$langl->includeLang($user['lang'] , 'game');
 
-        #if($_GET['nlo'] == 1) $info.=infobox('ACHTUNG!!','error','Du hast dich bei deinem letzten Besuch nicht ausgeloggt! Das k&ouml;nnte zur Folge haben, dass dein Account in fremde H&auml;nde f&auml;llt. Au&szlig;erdem verf&auml;lscht es die Online/Offline-Anzeige! Benutz also bitte <em>immer</em> den Log Out-Button!');
+        #if($_GET['nlo'] == 1) $info.=infobox('ACHTUNG!!','error','Du hast dich bei deinem letzten Besuch nicht ausgeloggt! Das könnte zur Folge haben, dass dein Account in fremde Hände fällt. Au&szlig;erdem verfälscht es die Online/Offline-Anzeige! Benutz also bitte <em>immer</em> den Log Out-Button!');
 
         if ($server == 1)
         {
@@ -59,7 +59,7 @@ switch ($action)
             $info .= $game->infobox('Cluster-Info', 'overview-cluster', nl2br($c['notice']), 'id');
         }
 
-        $layout->createlayout_top('HackTheNet - &Uuml;bersicht'); // Men� Aufbauen funktion aufruf aus layout.php
+        $layout->createlayout_top('HackTheNet - übersicht'); // Men� Aufbauen funktion aufruf aus layout.php
 
         # Cluster-Mitgliedsbeitrag bezahlen:
         $cluster = $get->get_cluster($usr['cluster']);
@@ -79,7 +79,7 @@ switch ($action)
                 {
                     $info .= $game->infobox('Fehler', 'important', 'Du hast auf deinem ersten PC 10.47.' .
                         $pc['ip'] . ' (' . $pc['name'] .
-                        ') nicht mehr gen&uuml;gend Credits um den Cluster-Mitgliedsbeitrag von ' . $cluster['tax'] .
+                        ') nicht mehr genügend Credits um den Cluster-Mitgliedsbeitrag von ' . $cluster['tax'] .
                         ' Credits zu bezahlen.');
                     # hmmm doppelte ID 'important'
                 }
@@ -95,7 +95,7 @@ switch ($action)
         $cnt=mysql_num_rows($r);
         if($cnt >= getmaxmails('in')) 
         {
-        $info.=infobox('WARNUNG', 'error', 'Dein Posteingang ist voll! Solange du keine Mails l&ouml;schst oder verschiebst, k&ouml;nnen dir keine anderen Nutzer mehr Ingame-Mails schicken!');
+        $info.=infobox('WARNUNG', 'error', 'Dein Posteingang ist voll! Solange du keine Mails löschst oder verschiebst, können dir keine anderen Nutzer mehr Ingame-Mails schicken!');
         }
         */
 
@@ -103,7 +103,7 @@ switch ($action)
         $a = explode(',', $usr['pcs']);
         $pccnt = count($a); # Anzahl PCs
 
-        $da = false; // Distributed Attack verf�gbar?
+        $da = false; // Distributed Attack verf�gbar?
         $sql = $dbc->db_query('SELECT * FROM pcs WHERE owner=' . mysql_escape_string($usr['id']) .
             ';');
         while ($x = mysql_fetch_assoc($sql))
@@ -122,7 +122,7 @@ switch ($action)
         $ingame->setuserval('da_avail', ($da == true ? 'yes' : 'no'));
 
         echo '<div class="content" id="overview">
-  <h2>&Uuml;bersicht</h2>
+  <h2>übersicht</h2>
   ' . $notif . '
   ' . $info;
 
@@ -143,7 +143,7 @@ switch ($action)
             echo '<div id="overview-computer">' . "\n";
             echo '<h3>Computer</h3>' . "\n";
             echo '<p>Auf <strong>' . $pcs_no_upgr . ' Computer' . ($pcs_no_upgr == 1 ? '' :
-                'n') . '</strong> l&auml;uft im Moment <strong>kein Upgrade</strong>; hier solltest du evtl. ein neues Upgrade starten.</p>' .
+                'n') . '</strong> läuft im Moment <strong>kein Upgrade</strong>; hier solltest du evtl. ein neues Upgrade starten.</p>' .
                 "\n";
             /* FIXME Fallunterscheidung */
             echo '<p><a href="game.php?m=pcs&amp;sid=' . $sid .
@@ -198,7 +198,7 @@ switch ($action)
         {
             $rhinfo = '<tr><th>Remote Hijack</th><td>';
             if ($pc['lrh'] + REMOTE_HIJACK_DELAY <= time())
-                $rhinfo .= '<span style="color:green;">sofort verf&uuml;gbar</span>';
+                $rhinfo .= '<span style="color:green;">sofort verfügbar</span>';
             else
                 $rhinfo .= $gres->nicetime($pc['lrh'] + REMOTE_HIJACK_DELAY);
             $rhinfo .= '</td></tr>';
@@ -208,14 +208,14 @@ switch ($action)
             $op = ' | <a href="battle.php?m=opc&amp;sid=' . $sid . '">Operation Center</a>';
         if ($pc['bb'] >= 2 && $pc['mm'] >= 2)
             $transfer = ' | <a href="game.php?m=transferform&amp;sid=' . $sid .
-                '">Geld &uuml;berweisen</a>';
+                '">Geld überweisen</a>';
         $pc['name'] = $gres->safeentities($pc['name']);
 
         echo '<div class="content" id="computer">
   <h2>Dein Computer</h2>
   <div class="submenu">
   <p><a href="game.php?page=upgradelist&amp;sid=' . $sid .
-            '">Upgrade-Men&uuml;</a>' . $op . $transfer . '</p>
+            '">Upgrade-Menü</a>' . $op . $transfer . '</p>
   </div>
   
   ' . $notif . '<div id="computer-properties">
@@ -329,7 +329,7 @@ switch ($action)
   <h2>Deine Computer</h2>
   <div class="submenu">
   <p><a href="game.php?page=upgradelist&amp;sid=' . $sid .
-            '">Upgrade-Men&uuml;</a></p>
+            '">Upgrade-Menü</a></p>
   </div>
   <div id="computer-item">
   ';
@@ -362,7 +362,7 @@ switch ($action)
                 break;
 
             case 'bb':
-                echo '<p>Lagerkapazit&auml;t:</b> ' . number_format($get->get_maxbb(), 0, ',', '.') .
+                echo '<p>Lagerkapazität:</b> ' . number_format($get->get_maxbb(), 0, ',', '.') .
                     ' Credits</p>' . "\n";
                 break;
 
@@ -371,7 +371,7 @@ switch ($action)
                 $v = $pc['mk'];
                 echo '</div>
     <div id="computer-weapons">
-    <h3>Zur Verf&uuml;gung stehende Waffen:</h3>
+    <h3>Zur Verfügung stehende Waffen:</h3>
     <table>
     ';
                 if ($gres->isavailh('scan', $pc))
@@ -387,13 +387,13 @@ switch ($action)
                 if ($gres->isavailh('smash', $pc))
                 {
                     echo '<tr>' . LF . '<th>Remote Smash:</th>' . LF .
-                        '<td>Zerst&ouml;rt Prozessor, Firewall oder SDK von fremden Rechnern.</td>' . LF .
+                        '<td>Zerstört Prozessor, Firewall oder SDK von fremden Rechnern.</td>' . LF .
                         '</tr>' . "\n";
                 }
                 if ($gres->isavailh('block', $pc))
                 {
                     echo '<tr>' . LF . '<th>Remote Block:</th>' . LF .
-                        '<td>Blockiert Computer f&uuml;r dessen Besitzer.</td>' . LF . '</tr>' . "\n";
+                        '<td>Blockiert Computer für dessen Besitzer.</td>' . LF . '</tr>' . "\n";
                 }
                 if ($gres->isavailh('rh', $pc))
                 {
@@ -409,11 +409,11 @@ switch ($action)
             case 'trojan':
 
                 $v = $pc['mk'];
-                echo '<p><strong>Zur Verf&uuml;gung stehende Angriffs-M&ouml;glichkeiten:</strong></p><br /><dl>';
+                echo '<p><strong>Zur Verfügung stehende Angriffs-Möglichkeiten:</strong></p><br /><dl>';
 
                 if ($ingame->tisavail('defacement', $pc))
                 {
-                    echo '<dt>Defacement</dt><dd>&Auml;ndert die Beschreibung des Gegners.</dd>';
+                    echo '<dt>Defacement</dt><dd>ändert die Beschreibung des Gegners.</dd>';
                 }
                 if ($ingame->tisavail('transfer', $pc))
                 {
@@ -521,7 +521,7 @@ switch ($action)
         echo '<div class="content" id="computer">' . "\n";
         echo '<h2>Dein Computer</h2>' . "\n";
         echo '<div class="submenu"><p><a href="game.php?page=pc&amp;sid=' . $sid .
-            '">Zur &Uuml;bersicht</a></p></div>' . "\n";
+            '">Zur übersicht</a></p></div>' . "\n";
         echo '<div id="computer-upgrades">' . "\n";
         echo $notif;
 
@@ -549,14 +549,14 @@ switch ($action)
                 $tmppc[$item] = $newlv;
             }
             echo '</table>' . "\n";
-            echo '<p>Wichtig: Das Geld von einem abgebrochenen Upgrade wird NICHT zur&uuml;ckerstattet, sondern ist verloren!</p>';
+            echo '<p>Wichtig: Das Geld von einem abgebrochenen Upgrade wird NICHT zurückerstattet, sondern ist verloren!</p>';
         }
 
         if ($full < UPGRADE_QUEUE_LENGTH)
         {
             if (isset($tmppc))
                 $pc = $tmppc;
-            echo '<h3>Upgrade zur Queue hinzuf&uuml;gen</h3>';
+            echo '<h3>Upgrade zur Queue hinzufügen</h3>';
             echo "<p><b>Achtung: Bitte nur einmal klicken!</b></p>";
             echo '<p><strong>Geld: ' . $bucks . ' Credits</strong></p>' . "\n";
 
@@ -593,7 +593,7 @@ switch ($action)
 
         $checkz = $_REQUEST['z'];
         if ($pc['upgrcode'] != $checkz)
-            die("<html><head><meta http-equiv=\"refresh\" content=\"2;url=game.php?page=upgradelist&sid=$sid\"></head><body>Upgrade bereits erstellt. Tipp: Bitte nicht &ouml;fter als einmal den Upgradelink anklicken!");
+            die("<html><head><meta http-equiv=\"refresh\" content=\"2;url=game.php?page=upgradelist&sid=$sid\"></head><body>Upgrade bereits erstellt. Tipp: Bitte nicht öfter als einmal den Upgradelink anklicken!");
 
         $upgrcode = uniqid(mt_rand(), true);
         $upgrcode = sha1($upgrcode);
@@ -606,8 +606,8 @@ switch ($action)
         $cnt0 = mysql_num_rows($r0);
         if ($cnt0 > 0)
         {
-            // b�se!
-            die("<html><head><meta http-equiv=\"refresh\" content=\"2;url=game.php?page=upgradelist&sid=$sid\"></head><body>Upgrade bereits erstellt. Tipp: Bitte nicht &ouml;fter als einmal den Upgradelink anklicken!");
+            // b�se!
+            die("<html><head><meta http-equiv=\"refresh\" content=\"2;url=game.php?page=upgradelist&sid=$sid\"></head><body>Upgrade bereits erstellt. Tipp: Bitte nicht öfter als einmal den Upgradelink anklicken!");
             #header('Location: game.php?page=upgradelist&sid='.$sid);
         }
         if (!$checkz)
@@ -649,12 +649,12 @@ switch ($action)
                         () . '\', `end`=\'' . mysql_escape_string($ftime) . '\', `item`=\'' .
                         mysql_escape_string($id) . '\', uniqueid=\'' . mysql_escape_string($checkz) . '\';');
 
-                    header('Location: game.php?page=upgradelist&ok=' . urlencode('Upgrade f&uuml;r ' .
-                        $ingame->idtoname($id) . ' l&auml;uft bis ' . $gres->nicetime($ftime)) . '&sid=' . $sid);
+                    header('Location: game.php?page=upgradelist&ok=' . urlencode('Upgrade für ' .
+                        $ingame->idtoname($id) . ' läuft bis ' . $gres->nicetime($ftime)) . '&sid=' . $sid);
 
                 } else
                 {
-                    header('Location: game.php?page=upgradelist&error=' . urlencode('Nicht gen&uuml;gend Geld') .
+                    header('Location: game.php?page=upgradelist&error=' . urlencode('Nicht genügend Geld') .
                         '&sid=' . $sid);
                 }
             } else
@@ -787,7 +787,7 @@ switch ($action)
                     $stat = '<span style="color:red;">Kein Upgrade am Laufen</span>';
                 else
                     $stat = '<span style="color:green;">' . $cnt . ' Upgrade' . ($cnt > 1 ?
-                        's laufen' : ' l&auml;uft') . ' bis ' . $gres->nicetime2(mysql_result($r, $cnt - 1,
+                        's laufen' : ' läuft') . ' bis ' . $gres->nicetime2(mysql_result($r, $cnt - 1,
                         'end'), true) . '</span>';
             } else
                 $stat = '-';
@@ -798,7 +798,7 @@ switch ($action)
             if ($gres->isavailh('rh', $x) === true)
             {
                 if ($x['lrh'] + REMOTE_HIJACK_DELAY <= time())
-                    $hijack = '<span style="color:green">verf�gbar</span>';
+                    $hijack = '<span style="color:green">verf�gbar</span>';
                 else
                     $hijack = '<span style="color:red">' . nicetime($x['lrh'] + REMOTE_HIJACK_DELAY) .
                         '</span>';
@@ -810,7 +810,7 @@ switch ($action)
                 if (($x['mm'] >= 1 && $x['ads'] < 5) || ($x['mm'] >= 4 && $x['dialer'] < 5) || ($x['mm'] >=
                     8 && $x['auctions'] < 5) || ($x['mm'] >= 10 && $x['bankhack'] < 5))
                 {
-                    $mmstat = '<br /><span style="color:red">MoneyMarket-Update verf&uuml;gbar!</span>';
+                    $mmstat = '<br /><span style="color:red">MoneyMarket-Update verfügbar!</span>';
                 } else
                     $mmstat = '';
 
@@ -820,7 +820,7 @@ switch ($action)
                 {
                     $attack = 'nein, erst wieder ' . $gres->nicetime3($next);
                 } elseif ($avail)
-                    $attack = '<span style="color:green">m&ouml;glich</span>';
+                    $attack = '<span style="color:green">möglich</span>';
                 else
                     $attack = '-';
             }
@@ -913,14 +913,14 @@ switch ($action)
                 }
             }
         }
-        header('Location: game.php?a=renamepclist&sid=' . $sid . '&ok=' . urlencode('Die &Auml;nderungen wurden gespeichert.'));
+        header('Location: game.php?a=renamepclist&sid=' . $sid . '&ok=' . urlencode('Die änderungen wurden gespeichert.'));
         break;
 
     case 'transferform': // ------------------------- TRANSFER FORM ------------------------
 
         if (time() < $transfer_ts && $server == $t_limit_server)
         {
-            $gres->simple_message('�berweisungen sind erst ab ' . nicetime($transfer_ts) .
+            $gres->simple_message('�berweisungen sind erst ab ' . nicetime($transfer_ts) .
                 ' erlaubt!');
             exit;
         }
@@ -952,21 +952,21 @@ switch ($action)
     document.frm.reciptype[i].checked=true; 
   }
   </script>';
-        $layout->createlayout_top('HackTheNet - Geld &uuml;berweisen');
+        $layout->createlayout_top('HackTheNet - Geld überweisen');
         if ($usr['bigacc'] == 'yes')
             $bigacc = '&nbsp;<a href="javascript:show_abook(\'pc\')">Adressbuch</a>';
         echo '<div class="content" id="computer">
   <h2>Dein Computer</h2>
   <div id="computer-transfer-start">
-  <h3>Geld &uuml;berweisen</h3>
+  <h3>Geld überweisen</h3>
   ' . $notif . '<br />
   <p><b>Geld: ' . $bucks . ' Credits</b></p>
   <form action="game.php?a=transfer&sid=' . $sid . '" method="post" name="frm">
   <input type="hidden" name="tcode" value="' . $usr['tcode'] . '">
   <input type="hidden" name="pc" value="' . $pcid . '">
   <table>
-  <tr><th colspan="3">&Uuml;berweisung</th></tr>
-  <tr><th>Empf&auml;nger:</th><td>
+  <tr><th colspan="3">überweisung</th></tr>
+  <tr><th>Empfänger:</th><td>
   <table>
   <tr><td><input type="radio" name="reciptype" value="cluster" id="_cluster"><label for="_cluster">Ein Cluster</label></td>
   <td> - Code: <input onchange="autosel(this)" name="clustercode" size="12" maxlength="12"></td></tr>
@@ -976,7 +976,7 @@ switch ($action)
   </table>
   </td></tr>
   <tr><th>Betrag:</th><td><input name="credits" size="5" maxlength="6" value="0"> Credits</td></tr>
-  <tr><th>&nbsp;</th><td><input type="submit" value=" Ausf&uuml;hren "></td></tr>
+  <tr><th>&nbsp;</th><td><input type="submit" value=" Ausführen "></td></tr>
   </table></form>
   </div>
   </div>';
@@ -988,7 +988,7 @@ switch ($action)
 
         if (time() < $transfer_ts && $server == $t_limit_server)
         {
-            $gres->simple_message('�berweisungen sind erst ab ' . nicetime($transfer_ts) .
+            $gres->simple_message('�berweisungen sind erst ab ' . nicetime($transfer_ts) .
                 ' erlaubt!');
             exit;
         }
@@ -1001,7 +1001,7 @@ switch ($action)
         $code = $_REQUEST['tcode'];
         if ($usr['tcode'] != $code)
         {
-            $gres->simple_message('&Uuml;berweisung ung&uuml;ltig! Bitte neu erstellen!');
+            $gres->simple_message('überweisung ungültig! Bitte neu erstellen!');
             break;
         }
 
@@ -1019,7 +1019,7 @@ switch ($action)
 
         $e = '';
         if ($credits > $pc['credits'])
-            $e = 'Nicht gen&uuml;gend Credits f&uuml;r &Uuml;berweisung vorhanden!';
+            $e = 'Nicht genügend Credits für überweisung vorhanden!';
         switch ($type)
         {
             case 'user':
@@ -1034,22 +1034,22 @@ switch ($action)
                     $e = 'Ein Cluster mit diesem Code existiert nicht!';
                 break;
             default:
-                $e = 'Ung&uuml;ltiger Empf&auml;nger-Typ!';
+                $e = 'Ungültiger Empfänger-Typ!';
                 break;
         }
 
         if ($credits < 100)
-            $e = 'Der Mindestbetrag f&uuml;r eine &Uuml;berweisung sind 100 Credits!';
+            $e = 'Der Mindestbetrag für eine überweisung sind 100 Credits!';
 
         if ($e == '')
         {
             $tcode = random_string(10);
             $fin = 0;
-            $layout->createlayout_top('HackTheNet - Geld &uuml;berweisen');
+            $layout->createlayout_top('HackTheNet - Geld überweisen');
             echo '<div class="content">
-    <h2>&Uuml;berweisung</h2>
+    <h2>überweisung</h2>
     <div id="transfer-step2">
-    <h3>&Uuml;berweisung best&auml;tigen</h3>
+    <h3>überweisung bestätigen</h3>
     <form action="game.php?a=transfer2&sid=' . $sid . '"  method="post">
     <input type="hidden" name="tcode" value="' . $tcode . '">
     <input type="hidden" name="pc" value="' . $pcid . '">
@@ -1065,12 +1065,12 @@ switch ($action)
                         $ownerinfo = '<a class=il href="user.php?m=info&user=' . $recip['owner'] .
                             '&sid=' . $sid . '" target="_blank">' . $recip_usr['name'] . '</a>';
                     $text .= '<b>Hiermit werden ' . $credits . ' Credits an den Rechner 10.47.' . $recip['ip'] .
-                        ', der ' . $ownerinfo . ' geh&ouml;rt, &uuml;berwiesen.</b><br /><br />';
+                        ', der ' . $ownerinfo . ' gehört, überwiesen.</b><br /><br />';
                     if ($pc['country'] == $recip['country'])
                     {
                         $rest = $credits;
                         $fin = $credits;
-                        $text .= 'Da dein Rechner im selben Land steht, wie der Ziel-Rechner, fallen keine Geb&uuml;hren an. Der User erh&auml;lt <b>' .
+                        $text .= 'Da dein Rechner im selben Land steht, wie der Ziel-Rechner, fallen keine Gebühren an. Der User erhält <b>' .
                             $rest . ' Credits</b>.';
                     } else
                     {
@@ -1085,14 +1085,14 @@ switch ($action)
                         {
                             $fin = $rest;
                             $text .= 'Von diesem Betrag werden noch ' . $out .
-                                ' Credits Geb&uuml;hren als Ausfuhr aus ' . $country . ' und ' . $in .
-                                ' Credits Geb&uuml;hren als Einfuhr nach ' . $country2 .
+                                ' Credits Gebühren als Ausfuhr aus ' . $country . ' und ' . $in .
+                                ' Credits Gebühren als Einfuhr nach ' . $country2 .
                                 ', dem Standort von 10.47.' . $recip['ip'] . ' abgezogen. ' . $recip_usr['name'] .
-                                ' erh&auml;lt also noch <b>' . $rest . ' Credits</b>.';
+                                ' erhält also noch <b>' . $rest . ' Credits</b>.';
                         } else
                         {
-                            $text .= 'Da der Betrag sehr gering ist, werden keine Geb&uuml;hren erhoben. ' .
-                                $recip_usr['name'] . ' erh&auml;lt <b>' . $credits . ' Credits</b>.';
+                            $text .= 'Da der Betrag sehr gering ist, werden keine Gebühren erhoben. ' .
+                                $recip_usr['name'] . ' erhält <b>' . $credits . ' Credits</b>.';
                             $fin = $credits;
                         }
 
@@ -1105,11 +1105,11 @@ switch ($action)
                         $credits = $rest;
                         $text .= '<br /><br />Da ' . $recip_usr['name'] .
                             ' seinen BucksBunker nicht weit genug ausgebaut hat, um das Geld zu Empfangen, werden nur <b>' .
-                            $rest . ' Credits</b> (inklusive Geb&uuml;hren) &uuml;berwiesen!';
+                            $rest . ' Credits</b> (inklusive Gebühren) überwiesen!';
                         if ($rest < 1)
                         {
                             echo '<div class="error"><h3>BucksBunker voll</h3><p>Der BucksBunker von ' . $recip_usr['name'] .
-                                ' ist voll! &Uuml;berweisung wird abgebrochen!</p></div>';
+                                ' ist voll! überweisung wird abgebrochen!</p></div>';
                             $layout->createlayout_bottom();
                             exit;
                         }
@@ -1119,7 +1119,7 @@ switch ($action)
 
                 case 'cluster':
                     echo '<b>Hiermit werden ' . $credits . ' Credits an den Cluster ' . $recip['code'] .
-                        ' (' . $recip['name'] . ') &uuml;berwiesen.</b><br />';
+                        ' (' . $recip['name'] . ') überwiesen.</b><br />';
                     $c = GetCountry('id', $pc['country']);
                     $country = $c['name'];
                     $out = $c['out'];
@@ -1127,13 +1127,13 @@ switch ($action)
                     if ($rest > 0)
                     {
                         $fin = $rest;
-                        echo 'Davon werden noch ' . $out . ' Credits als Ausfuhr-Geb&uuml;hr f&uuml;r ' .
+                        echo 'Davon werden noch ' . $out . ' Credits als Ausfuhr-Gebühr für ' .
                             $country . ' abgezogen. Der Cluster ' . $recip['code'] .
-                            ' erh&auml;lt also noch <b>' . $rest . ' Credits</b>';
+                            ' erhält also noch <b>' . $rest . ' Credits</b>';
                     } else
                     {
-                        echo 'Da der Betrag sehr gering ist, werden keine Geb&uuml;hren erhoben. Der Cluster ' .
-                            $recip['code'] . ' erh&auml;lt <b>' . $credits . ' Credits</b>.';
+                        echo 'Da der Betrag sehr gering ist, werden keine Gebühren erhoben. Der Cluster ' .
+                            $recip['code'] . ' erhält <b>' . $credits . ' Credits</b>.';
                         $fin = $credits;
                     }
                     break;
@@ -1141,7 +1141,7 @@ switch ($action)
             echo '<br /><br />
     <input type="button" value="Abbrechen" onclick="location.replace(\'game.php?sid=' .
                 $sid . '&a=transferform\');" />
-    <input type="submit" value=" Ausf&uuml;hren " /></p></form>';
+    <input type="submit" value=" Ausführen " /></p></form>';
             echo '</div>' . LF . '</div>';
             $layout->createlayout_bottom();
             $get->put_file($DATADIR . '/tmp/transfer_' . $tcode . '.txt', $type . '|' . $recip['id'] .
@@ -1165,7 +1165,7 @@ switch ($action)
         $fn = $DATADIR . '/tmp/transfer_' . $code . '.txt';
         if ($usr['tcode'] != $code || file_exists($fn) != true)
         {
-            $gres->simple_message('&Uuml;berweisung ung&uuml;ltig! Bitte neu erstellen!');
+            $gres->simple_message('überweisung ungültig! Bitte neu erstellen!');
             break;
         }
         $dbc->db_query('UPDATE users SET tcode=\'\' WHERE id=' . $usrid . ' LIMIT 1');
@@ -1185,14 +1185,14 @@ switch ($action)
                     mysql_escape_string($recip['id']) . '\';');
                 $s = '[usr=' . $usrid . ']' . $usr['name'] . '[/usr] hat dir ' . $dat[2] .
                     ' Credits auf deinen PC 10.47.' . $recip['ip'] . ' (' . $recip['name'] .
-                    ') &uuml;berwiesen.';
+                    ') überwiesen.';
                 if ($dat[2] != $dat[3])
-                    $s .= ' Abz&uuml;glich der Geb&uuml;hren hast du ' . $dat[3] .
+                    $s .= ' Abzüglich der Gebühren hast du ' . $dat[3] .
                         ' Credits erhalten!';
                 if ($recip['owner'] != $usrid)
                     addsysmsg($recip['owner'], $s);
-                $msg = '&Uuml;berweisung an 10.47.' . $recip['ip'] . ' (' . $recip['name'] .
-                    ') ausgef&uuml;hrt!';
+                $msg = 'überweisung an 10.47.' . $recip['ip'] . ' (' . $recip['name'] .
+                    ') ausgeführt!';
             } elseif ($dat[0] == 'cluster')
             {
                 $c = getcluster($dat[1]);
@@ -1202,7 +1202,7 @@ switch ($action)
                 $dbc->db_query('UPDATE clusters SET money=\'' . mysql_escape_string($c['money']) . '\',events=\'' .
                     mysql_escape_string($c['events']) . '\' WHERE id=' . mysql_escape_string($c['id']));
                 $msg = 'Dem Cluster ' . $c['code'] . ' wurden ' . $dat['2'] .
-                    ' Credits &uuml;berwiesen!';
+                    ' Credits überwiesen!';
             }
 
             $dbc->db_query('INSERT INTO transfers VALUES(\'' . $pcid . '\', \'user\', \'' . $usrid .
@@ -1244,11 +1244,11 @@ switch ($action)
         $info .= '<td>' . $c['name'] . '</td>' . "\n";
         $info .= '</tr>' . "\n";
         $info .= '<tr>' . "\n";
-        $info .= '<th>Einfuhr-Geb&uuml;hr:</th>' . "\n";
+        $info .= '<th>Einfuhr-Gebühr:</th>' . "\n";
         $info .= '<td>' . $c['in'] . '</td>' . "\n";
         $info .= '</tr>' . "\n";
         $info .= '<tr>' . "\n";
-        $info .= '<th>Ausfuhr-Geb&uuml;hr:</th>' . "\n";
+        $info .= '<th>Ausfuhr-Gebühr:</th>' . "\n";
         $info .= '<td>' . $c['out'] . '</td>' . "\n";
         $info .= '</tr>' . "\n";
 
@@ -1304,7 +1304,7 @@ switch ($action)
         echo '</select> <input type="submit" value="OK" /></td>
   </tr>
   <tr>
-  <!--<td class="map" colspan="2"><a href="javascript:showcountrysel()">Von Karte ausw&auml;hlen...</a></td>//-->
+  <!--<td class="map" colspan="2"><a href="javascript:showcountrysel()">Von Karte auswählen...</a></td>//-->
   </tr>
   </table>
   </form>

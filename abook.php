@@ -1,7 +1,7 @@
 <?php
 session_start();
 /**
- * Adressbuch-Verwaltung f�r Extended Account
+ * Adressbuch-Verwaltung f�r Extended Account
  **/
 
 
@@ -15,7 +15,7 @@ $dbc = new dbc();
 
 if ($usr['bigacc'] != 'yes')
 {
-    $gres->simple_message('Nur f&uuml;r User mit Extended Account!');
+    $gres->simple_message('Nur für User mit Extended Account!');
     exit;
 }
 
@@ -83,17 +83,17 @@ switch ($action)
         $layout->createlayout_top('HackTheNet - Adressbuch');
 
         if ($_REQUEST['saved'] == 1)
-            $xxx = '<div class="ok"><h3>OK</h3><p>Die &Auml;nderungen wurden &uuml;bernommen!</p></div><br />' .
+            $xxx = '<div class="ok"><h3>OK</h3><p>Die änderungen wurden übernommen!</p></div><br />' .
                 "\n";
         echo '<div id="abook-administration" class="content">
   <h2>Adressbuch</h2>
   <h3>Adressbuch verwalten</h3>' . $xxx . '
   <form action="abook.php?action=add&amp;sid=' . $sid . '" method="post">
   <table>
-  <tr><th colspan="2">Benutzer hinzuf&uuml;gen</th></tr>
+  <tr><th colspan="2">Benutzer hinzufügen</th></tr>
   <tr><th>Benutzername:</th><td><input name="user" size="20" maxlength="20" /></td></tr>
   <tr><th>Gruppe:</th><td><select name="group"><option value="1">Allgemein</option><option value=2>Cluster</option><option value=3>Freunde</option></select></td></tr>
-  <tr><td colspan="2" align="right"><input type="submit" value="Hinzuf&uuml;gen" /></td></tr>
+  <tr><td colspan="2" align="right"><input type="submit" value="Hinzufügen" /></td></tr>
   </table></form><br />';
 
         echo '<h3>Gruppe: Allgemein</h3>';

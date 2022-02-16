@@ -52,8 +52,8 @@ switch($action)
   </div>
   <div class="important">
   <h3>Wichtig</h3>
-  <p>Die Punktest&auml;nde und die Rangliste werden nur alle drei Stunden aktualisiert!<br />
-  Das n&auml;chste Mal passiert das um '.$updtime.'.</p>
+  <p>Die Punktestände und die Rangliste werden nur alle drei Stunden aktualisiert!<br />
+  Das nächste Mal passiert das um '.$updtime.'.</p>
   </div>
   ';
   

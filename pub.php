@@ -2,9 +2,11 @@
 
 define('IN_HTN', 1);
 $starttime = microtime();
-include ('config.php');
-if (!$htn_installed)
-{
+
+include('config.php');
+include_once('startup.php');
+
+if(!file_exists('HTN.INSTALLED')) {
     header("Location: install.php");
 }
 include ('gres.php');
@@ -51,7 +53,7 @@ switch ($action)
 
     case 'register':
 
-        #simple_message('Im Moment ist keine Registrierung mehr möglich.');
+        #simple_message('Im Moment ist keine Registrierung mehr mï¿½glich.');
         #exit;
 
         $layout->createlayout_top('HackTheNet - Account anlegen');
@@ -63,13 +65,13 @@ switch ($action)
             echo '<div class="important">' . LF;
             echo '<h3>Wichtig!</h3>' . LF;
             echo '<p>Jeder User verpflichtet sich, die <a href="pub.php?d=rules">Regeln</a> einzuhalten.<br />' .
-                LF . 'Verst&ouml;&szlig;e gegen die Regeln f&uuml;hren zum Ausschluss vom Spiel!</p>' .
+                LF . 'VerstÃ¶&szlig;e gegen die Regeln fÃ¼hren zum Ausschluss vom Spiel!</p>' .
                 LF;
             echo '</div>' . LF;
         }
 
         echo $notif . '
-  
+
   <div id="register-step1">
   <h3>Schritt 1: Zugangsdaten und Server</h3>
   <form action="pub.php?a=regsubmit" method="post">
@@ -78,7 +80,7 @@ switch ($action)
   <input type="radio" name="server" value="1" checked="checked" /> Server 1<br />
   </td></tr>
   <tr>
-  <th>Gew&uuml;nschter NickName:</th>
+  <th>GewÃ¼nschter NickName:</th>
   <td><input name="nick" id="_nick" maxlength="20" /></td>
   </tr>
   <tr>
@@ -86,7 +88,7 @@ switch ($action)
   <td><input name="email" id="_email" maxlength="50" /><br />
   Nur wenn eine korrekte Email-Adresse angegeben wurde, kann der Account aktiviert werden!</td>
   </tr>
-  <tr><th>Land für deinen PC:</th><td><select name="country">
+  <tr><th>Land fï¿½r deinen PC:</th><td><select name="country">
   ';
         include ('data/static/country_data.inc.php');
         foreach ($countrys as $c)
@@ -130,9 +132,9 @@ switch ($action)
         }
         $e = false;
 
-        $badwords = 'admin|king|multi|cheat|fuck|fick|sex|porn|penis|vagina|arsch|hitler|himmler|goebbels|göbbels|hure|nutte|fotze|bitch|schlampe';
-        # nein, king ist kein böses, sondern ein reserviertes wort ^^
-        $nickzeichen = 'abcdefghijklmnopqrstuvwxyzäüöABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜß0123456789_-:@.!=?$%/&';
+        $badwords = 'admin|king|multi|cheat|fuck|fick|sex|porn|penis|vagina|arsch|hitler|himmler|goebbels|gï¿½bbels|hure|nutte|fotze|bitch|schlampe';
+        # nein, king ist kein bï¿½ses, sondern ein reserviertes wort ^^
+        $nickzeichen = 'abcdefghijklmnopqrstuvwxyzï¿½ï¿½ï¿½ABCDEFGHIJKLMNOPQRSTUVWXYZï¿½ï¿½ï¿½ï¿½0123456789_-:@.!=?$%/&';
 
         if ($nick != '')
         {
@@ -161,7 +163,7 @@ switch ($action)
             if (eregi('(' . $badwords . ')', $x) != false)
             {
                 $e = true;
-                $msg .= 'Der Nickname darf bestimmte W&ouml;rter nicht enthalten.<br />';
+                $msg .= 'Der Nickname darf bestimmte WÃ¶rter nicht enthalten.<br />';
             }
         } else
         {
@@ -171,7 +173,7 @@ switch ($action)
         if (!$gres->check_email($email))
         {
             $e = true;
-            $msg .= 'Bitte eine g&uuml;ltige Email-Adresse im Format x@y.z angeben.<br />';
+            $msg .= 'Bitte eine gÃ¼ltige Email-Adresse im Format x@y.z angeben.<br />';
         }
 
         #$javascript = file_get('data/pubtxt/selcountry_head.txt');
@@ -187,13 +189,13 @@ switch ($action)
 
             /* blubb ... durch selectliste ersetzt!
             createlayout_top('HackTheNet - Account anlegen');
-            
+
             $selcode=str_replace('%path%','images/maps',file_get('data/pubtxt/selcountry_body.txt'));
             echo '<div class="content" id="register">
             <h2>Registrierung</h2>
             <div id="register-step2">
-            <h3>Schritt 2: Land auswählen</h3>
-            <p>Bitte w&auml;hle jetzt, in welchem Land der Erde dein Computer stehen soll. Nat&uuml;rlich nur im Spiel und nicht in echt...</p>
+            <h3>Schritt 2: Land auswï¿½hlen</h3>
+            <p>Bitte wÃ¤hle jetzt, in welchem Land der Erde dein Computer stehen soll. NatÃ¼rlich nur im Spiel und nicht in echt...</p>
             <form action="pub.php?a=regsubmit2" method="post" name="coolform">
             <input type="hidden" name="code" value="'.$tmpfnx.'" />
             <input type="hidden" name="country" value="" />
@@ -242,12 +244,12 @@ switch ($action)
         {
             @unlink('data/regtmp/' . $tmpfnx . '.txt');
             echo '  <div class="error"><h3>Sorry</h3>
-    <p>Das gew&auml;hlte Land ist schon "voll"! Bitte such dir ein anderes Land aus!</p></div>
+    <p>Das gewÃ¤hlte Land ist schon "voll"! Bitte such dir ein anderes Land aus!</p></div>
     <form action="pub.php?a=regsubmit" method="post">
     <input type="hidden" name="server" value="' . $server . '">
     <input type="hidden" name="nick" value="' . $nick . '">
     <input type="hidden" name="email" value="' . $email . '">
-    <p><input type="submit" value=" Zur&uuml;ck "></p>
+    <p><input type="submit" value=" ZurÃ¼ck "></p>
     </form>';
             echo '</div>' . LF . '</div>';
             $layout->createlayout_bottom();
@@ -309,7 +311,7 @@ switch ($action)
         $fn = 'data/regtmp/' . $_GET['code'] . '.txt';
         if (file_exists($fn) == false)
         {
-            $gres->simple_message('Ung&uuml;ltiger Registrierungscode!');
+            $gres->simple_message('UngÃ¼ltiger Registrierungscode!');
         } else
         {
 
@@ -371,7 +373,7 @@ switch ($action)
       <div id="register-activate">
       ';
                 echo '<div class="ok"><h3>Account aktiviert!</h3>';
-                echo '<p>Herzlichen Gl&uuml;ckwunsch!<br />Dein Account wurde aktiviert!<br />Du kannst dich jetzt auf der <a href="./">Startseite</a> einloggen!</p></div>';
+                echo '<p>Herzlichen GlÃ¼ckwunsch!<br />Dein Account wurde aktiviert!<br />Du kannst dich jetzt auf der <a href="./">Startseite</a> einloggen!</p></div>';
 
             } else
             {
@@ -381,8 +383,8 @@ switch ($action)
       <div id="register-activate">
       ';
                 echo '<div class="error"><h3>Sorry</h3>
-      
-      <p>Das gew&auml;hlte Land ist schon "voll"! Bitte such dir ein anderes Land aus!</p></div>
+
+      <p>Das gewÃ¤hlte Land ist schon "voll"! Bitte such dir ein anderes Land aus!</p></div>
       <form action="pub.php?a=regsubmit" method="post">
       <input type=hidden name="server" value="' . $server . '">
       <input type=hidden name="nick" value="' . $nick . '">
@@ -421,7 +423,7 @@ switch ($action)
                     db_query('UPDATE users SET password=\'' . md5($pwd) . '\' WHERE id=\'' . $usr['id'] .
                         '\';');
 
-                    if (@mail($email, 'Zugangsdaten für HackTheNet', LF .
+                    if (@mail($email, 'Zugangsdaten fï¿½r HackTheNet', LF .
                         'http://www.hackthenet.org/' . LF . LF . 'Server: Server ' . $server . LF .
                         'Benutzername: ' . $usr['name'] . LF . 'Passwort: ' . $pwd . LF,
                         'From: HackTheNet <robot@hackthenet.org>'))
@@ -449,7 +451,7 @@ switch ($action)
         } else
         {
             unset($usr);
-            simple_message('Email-Adresse ung&uuml;ltig!');
+            simple_message('Email-Adresse ungÃ¼ltig!');
         }
 
         break;
@@ -484,7 +486,7 @@ switch ($action)
                     mysql_escape_string($usr['id']) . '\', payload=\'' . mysql_escape_string($usr['name']) .
                     ' ' . mysql_escape_string($usr['email']) . ' self-deleted\';');
 
-                simple_message('Account ' . $usr['name'] . ' (' . $usrid . ') gel&ouml;scht!');
+                simple_message('Account ' . $usr['name'] . ' (' . $usrid . ') gelÃ¶scht!');
 
             } else
             {
@@ -492,7 +494,7 @@ switch ($action)
             }
 
         } else
-            simple_message('Ung&uuml;ltiger Account-L&ouml;sch-Code!');
+            simple_message('UngÃ¼ltiger Account-LÃ¶sch-Code!');
         break;
 
     case 'oldhome': // ----------------------- HOME --------------------------

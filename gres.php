@@ -22,7 +22,7 @@ if (file_exists('data/work.txt') == true || file_exists('data/mysql-backup.txt')
   <div class="info">
   <h3>Information</h3>
   <p>Im Moment wird am Server gearbeitet.<br />
-  Bitte probiere es doch später noch einmal.<br />
+  Bitte probiere es doch spï¿½ter noch einmal.<br />
   Du kannst auch so lange dem <a href="http://forum.hackthenet.org/">Forum</a> einen Besuch abstatten.</p>
   </div>
   </div>
@@ -33,34 +33,28 @@ if (file_exists('data/work.txt') == true || file_exists('data/mysql-backup.txt')
 
 $STYLESHEET = $standard_stylesheet;
 
-if ($db_use_this_values)
-{
-    $dbcon = @mysql_connect($db_host, $db_username, $db_password);
-} else
-{
-    $dbcon = @mysql_connect();
-}
-
-if (!$dbcon)
+$persistence = new persistence();
+$database = $persistence->get_db();
+if (!$database)
     die('Datenbankzugriff gescheitert! Bitte nochmal probieren.');
 
 if (file_exists('data/mysql-backup-prepare.txt') == true)
 {
     $notif = '<div class="work">
   <h3>Server-Arbeiten</h3>
-  <p>Das Spiel wird für ca. eine Minute nicht zugänglich sein.</p></div>';
+  <p>Das Spiel wird fï¿½r ca. eine Minute nicht zugï¿½nglich sein.</p></div>';
 }
 if (file_exists('data/longwork-prepare.txt') == true)
 {
     $notif = '<div class="work">
   <h3>Server-Arbeiten</h3>
-  <p>Das Spiel wird in ca. 2 Minuten für längere Zeit nicht zugänglich sein.</p></div>';
+  <p>Das Spiel wird in ca. 2 Minuten fï¿½r lï¿½ngere Zeit nicht zugï¿½nglich sein.</p></div>';
 }
 if (isset($_GET['ok']))
 {
     $ok = nl2br(strip_tags($_GET['ok'], '<br /><br>'));
     $notif .= '<div class="ok">
-  <h3>Aktion ausgef&uuml;hrt</h3>
+  <h3>Aktion ausgefÃ¼hrt</h3>
   <p>' . $ok . '</p></div>
   ';
 }

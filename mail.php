@@ -89,7 +89,7 @@ switch ($action)
 
         if ($full == true)
             $full = '<div class="important">' . LF . '<h3>Dein Posteingang ist voll!</h3>' .
-                LF . '<p>Bitte l&ouml;sche Mails, damit andere User dir wieder schreiben k&ouml;nnen.</p>' .
+                LF . '<p>Bitte lösche Mails, damit andere User dir wieder schreiben können.</p>' .
                 LF . '</div>' . "\n";
         $layout->createlayout_top('HackTheNet - Messages');
         if ($inbox != '')
@@ -104,10 +104,10 @@ switch ($action)
   <p><a href="mail.php?m=archiv&amp;sid=' . $sid .
             '">Nachrichten-Archiv</a> | <a href="mail.php?m=outbox&amp;sid=' . $sid .
             '">Zuletzt gesendete Mails</a> | <a href="mail.php?m=transmit1&amp;sid=' . $sid .
-            '">Mails &uuml;bertragen</a></p>
+            '">Mails übertragen</a></p>
   </div>
   ' . $notif . $full;
-        #echo '<div class="important"><h3>Achtung!</h3><p>Ab sofort werden Nachrichten die �lter als 7 Tage sind aus dem Postein und -ausgang automatisch gel�scht!</p></div>';
+        #echo '<div class="important"><h3>Achtung!</h3><p>Ab sofort werden Nachrichten die �lter als 7 Tage sind aus dem Postein und -ausgang automatisch gel�scht!</p></div>';
         if ($inbox != '')
         {
             echo '<div id="messages-inbox">
@@ -128,9 +128,9 @@ switch ($action)
     <td colspan="4" class="options"><select name="action">
     <option value="markread">Als gelesen markieren</option>
     <option value="archive">Ins Archiv verschieben</option>
-    <option value="delete">L&ouml;schen</option>
+    <option value="delete">Löschen</option>
     <option value="markunread">Als neu markieren</option>
-    </select> <input type="submit" value="Ausf&uuml;hren" /></td>
+    </select> <input type="submit" value="Ausführen" /></td>
     <td class="checkbox"><input type="checkbox" onclick="ch_all(this,\'c\')" /></tr>
     </table>
     </form>
@@ -153,8 +153,8 @@ switch ($action)
     <tr>
     <td colspan="3" class="options"><select name="opt">
     <option value="read">Als gelesen markieren</option>
-    <option value="del">L&ouml;schen</option>
-    </select> <input type="submit" value="Ausf&uuml;hren" /></td>
+    <option value="del">Löschen</option>
+    </select> <input type="submit" value="Ausführen" /></td>
     <td class="checkbox"><input type="checkbox" onclick="ch_all(this,\'c\')" />
     </tr>
     </table>
@@ -192,7 +192,7 @@ switch ($action)
         $mail->newmailcount(true);
 
         if ($opt == 'del')
-            $xtxt = 'gel&ouml;scht';
+            $xtxt = 'gelöscht';
         elseif ($opt == 'read')
             $xtxt = 'als gelesen markiert';
         header('Location: mail.php?a=start&sid=' . $sid . '&' . ($cnt != 0 ? 'ok=' .
@@ -231,7 +231,7 @@ switch ($action)
     </tr>
     ' . $x . '
     <tr id="messages-archive-confirm">
-    <td colspan="4" class="options"><input type="submit" value="L&ouml;schen" /></td>
+    <td colspan="4" class="options"><input type="submit" value="Löschen" /></td>
     <td class="checkbox"><input type="checkbox" onclick="ch_all(this,\'c\')" />
     </tr>
     </table>
@@ -255,7 +255,7 @@ switch ($action)
   <table>
   <tr>
   <th class="number">Nummer</th>
-  <th class="from">Empf&auml;nger</th>
+  <th class="from">Empfänger</th>
   <th class="time">Zeit</th>
   <th class="title">Betreff</th>
   <th class="checkbox">Markieren</th>
@@ -263,9 +263,9 @@ switch ($action)
   ' . $x . '
   <tr id="messages-outbox-confirm">
   <td colspan="4" class="options"><select name="action">
-  <option value="delete">L&ouml;schen</option>
+  <option value="delete">Löschen</option>
   <option value="archive">Ins Archiv verschieben</option>
-  </select> <input type="submit" value="Ausf&uuml;hren" /></td>
+  </select> <input type="submit" value="Ausführen" /></td>
   <td class="checkbox"><input type="checkbox" onclick="ch_all(this,\'c\')" />
   </tr>
   </table>
@@ -283,7 +283,7 @@ switch ($action)
             $dbc->db_query('DELETE FROM mails WHERE ' . $s . ';');
         $mail->newmailcount(true);
         header('Location: mail.php?m=' . $_REQUEST['redir'] . '&sid=' . $sid . '&ok=' .
-            urlencode('Die gew&auml;hlten Mails wurden gel&ouml;scht.'));
+            urlencode('Die gewählten Mails wurden gelöscht.'));
         break;
 
     case 'archive': //------------------------- ARCHIVE -------------------------------
@@ -296,10 +296,10 @@ switch ($action)
             if ($s != '')
                 $dbc->db_query('UPDATE mails SET xread=\'yes\',box=\'arc\' WHERE ' . $s . ';');
             $mail->newmailcount(true);
-            $ok = 'Die gew&auml;hlten Mails wurden ins Archiv verschoben.';
+            $ok = 'Die gewählten Mails wurden ins Archiv verschoben.';
         } else
         {
-            $error = 'Das Archiv ist voll. Es k&ouml;nnen maximal ' . $get->get_maxmails('arc') .
+            $error = 'Das Archiv ist voll. Es können maximal ' . $get->get_maxmails('arc') .
                 ' Mails gelagert werden.';
         }
         header('Location: mail.php?m=' . $_REQUEST['redir'] . '&sid=' . $sid . '&' . ($ok !=
@@ -313,7 +313,7 @@ switch ($action)
             $dbc->db_query('UPDATE mails SET xread=\'yes\' WHERE ' . $s . ';');
         $mail->newmailcount(true);
         header('Location: mail.php?m=' . $_REQUEST['redir'] . '&sid=' . $sid . '&ok=' .
-            urlencode('Die gew&auml;hlten Mails wurden als gelesen markiert.'));
+            urlencode('Die gewählten Mails wurden als gelesen markiert.'));
         break;
 
     case 'markunread': //------------------------- Mark Unread -------------------------------
@@ -323,7 +323,7 @@ switch ($action)
             $dbc->db_query('UPDATE mails SET xread=\'no\' WHERE ' . $s . ';');
         $mail->newmailcount(true);
         header('Location: mail.php?m=' . $_REQUEST['redir'] . '&sid=' . $sid . '&ok=' .
-            urlencode('Die gew&auml;hlten Mails wurden als ungelesen markiert.'));
+            urlencode('Die gewählten Mails wurden als ungelesen markiert.'));
         break;
 
     case 'sendmail': //------------------------- SENDMAIL -------------------------------
@@ -402,7 +402,7 @@ switch ($action)
                             $e = true;
                             $error .= 'Das Postfach von ' . $rec .
                                 ' ist leider voll. Du kannst ihm/ihr keine Nachricht schicken.<br />' . $rec .
-                                ' hat f&uuml;r diesen Fall aber folgende Nachricht hinterlassen:<br />' . $recip['inbox_full'];
+                                ' hat für diesen Fall aber folgende Nachricht hinterlassen:<br />' . $recip['inbox_full'];
                         }
                     } else
                     {
@@ -466,17 +466,17 @@ switch ($action)
                 break;
             case 'arc':
                 $redir = 'archiv';
-                $xcap = 'Absender oder Empf&auml;nger';
+                $xcap = 'Absender oder Empfänger';
                 break;
             case 'out':
                 $redir = 'outbox';
-                $xcap = 'Empf&auml;nger';
+                $xcap = 'Empfänger';
                 break;
         }
         $links = '<a href="mail.php?m=' . $redir . '&amp;sid=' . $sid .
-            '">Zur&uuml;ck</a> | <a href="mail.php?sid=' . $sid . '&amp;action=delete&amp;c' .
+            '">Zurück</a> | <a href="mail.php?sid=' . $sid . '&amp;action=delete&amp;c' .
             $msg . '=1&amp;redir=' . $redir . '&amp;type=' . $data['box'] .
-            '">L&ouml;schen</a>';
+            '">Löschen</a>';
         if ($data['box'] != 'out')
             $links .= ' | <a href="mail.php?a=reply&amp;msg=' . $msg . '&amp;sid=' . $sid .
                 '">Antworten</a>';
@@ -570,15 +570,15 @@ switch ($action)
         break;
 
     case 'transmit1': //------------------------- TRANSMIT 1 -------------------------------
-        $layout->createlayout_top('HackTheNet - Messages - Mails �bertragen');
+        $layout->createlayout_top('HackTheNet - Messages - Mails �bertragen');
         echo '<div class="content" id="messages">
   <h2>Messages</h2>
   <div id="messages-transmit1">
-  <h3>Mails &uuml;bertragen</h3>
-  <p>Mit dieser Funktion kannst du ausgew&auml;hlte HTN-Ingame-Nachrichten zur Archivierung oder,
+  <h3>Mails übertragen</h3>
+  <p>Mit dieser Funktion kannst du ausgewählte HTN-Ingame-Nachrichten zur Archivierung oder,
   um Platz im Postfach zu schaffen,
   an deine Email-Adresse schicken.<br />
-  Du erh&auml;ltst dann eine Email, in deren Anhang du alle gew&auml;hlten Ingame-Messages als Textdateien findest.</p>
+  Du erhältst dann eine Email, in deren Anhang du alle gewählten Ingame-Messages als Textdateien findest.</p>
   <form action="mail.php?a=transmit2&amp;sid=' . $sid . '" method="post">
   <table>
   <tr id="messages-transmit1-mail-address">
@@ -606,22 +606,22 @@ switch ($action)
         break;
 
     case 'transmit2': //------------------------- TRANSMIT 2 -------------------------------
-        $layout->createlayout_top('HackTheNet - Messages - Mails �bertragen');
+        $layout->createlayout_top('HackTheNet - Messages - Mails �bertragen');
         echo '<div class="content" id="messages">
   <h2>Messages</h2>
   <div id="messages-transmit2">
-  <h3>Mails &uuml;bertragen</h3>
+  <h3>Mails übertragen</h3>
   ';
         $email = $_REQUEST['email'];
         $subject = $_REQUEST['subject'];
         $e = '';
         if (!$mail->check_email($email))
-            $e .= 'Bitte eine g&uuml;ltige Email-Adresse angeben!' . "\n";
+            $e .= 'Bitte eine gültige Email-Adresse angeben!' . "\n";
         if ($subject == '')
-            $e .= 'Bitte einen Betreff f&uuml;r die Email eingeben!' . "\n";
+            $e .= 'Bitte einen Betreff für die Email eingeben!' . "\n";
         if (!($_REQUEST['in'] == 'yes' || $_REQUEST['out'] == 'yes' || $_REQUEST['arc'] ==
             'yes'))
-            $e .= 'Bitte mindestens einen Ordner ausw&auml;hlen!' . "\n";
+            $e .= 'Bitte mindestens einen Ordner auswählen!' . "\n";
         if ($e != '')
         {
             echo '<div class=error>' . $e . '</div>';
@@ -631,7 +631,7 @@ switch ($action)
         $code = random_string(10);
         $get->put_file($DATADIR . '/tmp/mail_transmit_' . $code . '.txt', $email . "\x0b" . $subject .
             "\x0b" . $_REQUEST['in'] . "\x0b" . $_REQUEST['out'] . "\x0b" . $_REQUEST['arc']);
-        echo '<p>W&auml;hle jetzt die Mails, die du &uuml;bertragen m&ouml;chtest!</p>
+        echo '<p>Wähle jetzt die Mails, die du übertragen möchtest!</p>
   <form action="mail.php?a=transmit3&amp;sid=' . $sid . '&amp;code=' . $code .
             '" method="post">
   <table>
@@ -691,7 +691,7 @@ switch ($action)
             ' Nachrichten, die jeweils als Textdatei an diese Mail angehangen wurden:' . "\n";
         foreach ($list as $mail)
         {
-            $msg .= '    � ' . $mail . "\n";
+            $msg .= '    � ' . $mail . "\n";
         }
         $msg .= "\n" . LF . 'Greetz' . LF . 'HackTheNet-Team';
         $header = 'From: HackTheNet-Mail-Robot <robot@hackthenet.org>' . LF . 'To: ' . $usr['name'] .
@@ -709,10 +709,10 @@ switch ($action)
         {
             if (@mail($email, $subject, $body, $header))
             {
-                echo '<div class="ok">' . LF . '<h3>Aktion ausgef�hrt</h3>' . LF .
+                echo '<div class="ok">' . LF . '<h3>Aktion ausgef�hrt</h3>' . LF .
                     '<p>Die Email wurde an ' . $email . ' verschickt.</p>' . LF . '</div>' . "\n";
                 echo '<div class="important">' . LF . '<h3>Achtung!</h3>' . LF .
-                    '<p>Pr&uuml;fe erst, ob sie angekommen ist, bevor du die Original-Mails l&ouml;schst.</p>' .
+                    '<p>Prüfe erst, ob sie angekommen ist, bevor du die Original-Mails löschst.</p>' .
                     LF . '</div>' . "\n";
             } else
             {

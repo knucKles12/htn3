@@ -23,7 +23,7 @@ $layout = new layout();
 $gres = new gres();
 $clusterc = new cluster();
 
-# Konstanten f�r Cluster-Vertr�ge:
+# Konstanten f�r Cluster-Vertr�ge:
 define('CV_WAR', 1, false);
 define('CV_BEISTAND', 2, false);
 define('CV_PEACE', 3, false);
@@ -67,7 +67,7 @@ switch ($action)
             $img = '<tr>' . LF . '<td colspan="2"><img src="' . $img .
                 '" alt="Cluster-Logo" /></td>' . LF . '</tr>' . "\n";
             #}
-            #$img='<tr>'.LF.'<td colspan="2">Das Clusterlogo kann im Moment wegen einer noch nicht geschlossenen Sicherheitsl&uuml;cke nicht angezeigt werden.</td>'.LF.'</tr>'."\n";
+            #$img='<tr>'.LF.'<td colspan="2">Das Clusterlogo kann im Moment wegen einer noch nicht geschlossenen Sicherheitslücke nicht angezeigt werden.</td>'.LF.'</tr>'."\n";
         } else
             $img = '';
 
@@ -96,11 +96,11 @@ switch ($action)
         $finances = '<a href="cluster.php?page=finances&amp;sid=' . $sid .
             '">Cluster-Kasse</a><br />';
         $battles = '<a href="cluster.php?page=battles&amp;sid=' . $sid .
-            '">Angriffs&uuml;bersicht</a><br />';
+            '">Angriffsübersicht</a><br />';
         $konvents = '<a href="cluster.php?page=convents&amp;sid=' . $sid .
-            '">Vertr&auml;ge</a><br />';
+            '">Verträge</a><br />';
         $req_verw = '<a href="cluster.php?page=req_verw&amp;sid=' . $sid .
-            '">Mitgliedsantr&auml;ge</a> (' . $reqs . ')<br />';
+            '">Mitgliedsanträge</a> (' . $reqs . ')<br />';
         if ($stat == CS_ADMIN)
         {
             $funcs = $settings . $members . $finances . $battles . $konvents . $req_verw;
@@ -109,7 +109,7 @@ switch ($action)
         if ($stat == CS_COADMIN)
         {
             $funcs = $settings . $finances . $battles . $konvents . $req_verw;
-            $jobs = 'Den Cluster verwalten. Du kannst alles machen au&szlig;er den Status von Mitgliedern &auml;ndern.';
+            $jobs = 'Den Cluster verwalten. Du kannst alles machen au&szlig;er den Status von Mitgliedern ändern.';
         }
         if ($stat == CS_WAECHTER)
         {
@@ -119,22 +119,22 @@ switch ($action)
         if ($stat == CS_WARLORD)
         {
             $funcs = $battles . $konvents . $finances;
-            $jobs = 'Wie ein General den Cluster durch Kriege f&uuml;hren!';
+            $jobs = 'Wie ein General den Cluster durch Kriege führen!';
         }
         if ($stat == CS_KONVENTIONIST)
         {
             $funcs = $konvents . $finances;
-            $jobs = 'Durch Verhandlungen, Zahlungen und Vertr&auml;ge den politischen Status des Clusters bestimmen.';
+            $jobs = 'Durch Verhandlungen, Zahlungen und Verträge den politischen Status des Clusters bestimmen.';
         }
         if ($stat == CS_SUPPORTER)
         {
             $funcs = $finances;
-            $jobs = 'Schwache Cluster-Mitglieder unterst&uuml;tzen.';
+            $jobs = 'Schwache Cluster-Mitglieder unterstützen.';
         }
         if ($stat == CS_MITGLIEDERMINISTER)
         {
             $funcs = $req_verw;
-            $jobs = 'Aufname-Antr&auml;ge pr&uuml;fen.';
+            $jobs = 'Aufname-Anträge prüfen.';
         }
 
         if ($stat > CS_MEMBER)
@@ -195,7 +195,7 @@ switch ($action)
 <td>' . $clusterstat . '</td>
 </tr>
 ' . $jobs . $funcs . '<tr>
-<th>Verm&ouml;gen:</th>
+<th>Vermögen:</th>
 <td>' . $money . ' Credits</td>
 </tr>
 <tr>
@@ -221,7 +221,7 @@ switch ($action)
 <tr><th>Text:</th><td><textarea name="notice" rows="4" cols="30">' . $cluster['notice'] .
                 '</textarea></td></tr>
 <tr><th>Aktionen:</th><td><input type="submit" value="Speichern" />
-<input type="button" onclick="this.form.notice.value=\'\';this.form.submit();" value="L&ouml;schen" />
+<input type="button" onclick="this.form.notice.value=\'\';this.form.submit();" value="Löschen" />
 </td></tr>
 </table>
 </form>
@@ -303,10 +303,10 @@ switch ($action)
             CS_KONVENTIONIST || $usr['clusterstat'] == CS_COADMIN)
         {
 
-            #simple_message('Die Vertr&auml;ge-Verwaltung ist heute morgen nicht verf&uuml;gbar. Probier es heute nachmittag nochmal.');
+            #simple_message('Die Verträge-Verwaltung ist heute morgen nicht verfügbar. Probier es heute nachmittag nochmal.');
             #exit;
 
-            $layout->createlayout_top('HackTheNet - Cluster - Vertr&auml;ge');
+            $layout->createlayout_top('HackTheNet - Cluster - Verträge');
             echo '<div class="content" id="cluster">
 <h2>Cluster</h2>
 ' . $notif . '<div id="cluster-create-convent">
@@ -321,7 +321,7 @@ switch ($action)
 <tr>
 <th>Vertrags-Art:</th>
 <td><select name="type">
-<option value="1">Kriegserkl&auml;rung</option>
+<option value="1">Kriegserklärung</option>
 <option value="2">Beistandsvertrag</option>
 <option value="3">Friedensvertrag</option>
 <option value="5">Nicht-Angriffs-Pakt</option>
@@ -373,7 +373,7 @@ switch ($action)
                 $dbc->db_query('INSERT INTO cl_pacts VALUES (' . $clusterid . ', ' .
                     mysql_escape_string($type) . ', ' . mysql_escape_string($dat['id']) . ');');
                 $cluster[events] = $gres->nicetime4() . ' [usr=' . $usrid . ']' . $usr['name'] .
-                    '[/usr] tr&auml;gt <i>' . $convent . '</i> mit dem Cluster [cluster=' . $dat['id'] .
+                    '[/usr] trägt <i>' . $convent . '</i> mit dem Cluster [cluster=' . $dat['id'] .
                     ']' . $cname . '[/cluster] ein.' . LF . $cluster['events'];
                 $dbc->db_query('UPDATE clusters SET events=\'' . mysql_escape_string($cluster['events']) .
                     '\' WHERE id=' . $clusterid);
@@ -401,7 +401,7 @@ switch ($action)
                     ' Credits pro Tag' . LF . $cluster['events'];
                 $dbc->db_query('UPDATE clusters SET events=\'' . mysql_escape_string($cluster['events']) .
                     '\',tax=' . mysql_escape_string($tax) . ' WHERE id=' . $clusterid);
-                header('Location: cluster.php?page=finances&sid=' . $sid . '&ok=' . urlencode('Die &Auml;nderungen wurden &uuml;bernommen.'));
+                header('Location: cluster.php?page=finances&sid=' . $sid . '&ok=' . urlencode('Die änderungen wurden übernommen.'));
             } else
             {
                 header('Location: cluster.php?page=finances&sid=' . $sid . '&error=' . urlencode
@@ -438,8 +438,8 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             {
                 $fm = number_format($cluster[money], 0, ',', '.');
                 echo '<div id="cluster-money">
-<h3>Verm�gen</h3>
-<p>Aktuelles Verm&ouml;gen des Clusters: ' . $fm . ' Credits.</p>
+<h3>Verm�gen</h3>
+<p>Aktuelles Vermögen des Clusters: ' . $fm . ' Credits.</p>
 </div>
 <div id="cluster-tax">
 <h3>Mitgliedsbeitrag</h3>
@@ -465,12 +465,12 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                 $bigacc = '&nbsp;<a href="javascript:show_abook(\'pc\')">Adressbuch</a>';
             echo '
 <div id="cluster-transfers">
-<h3>�berweisungen</h3>
+<h3>�berweisungen</h3>
 <form action="cluster.php?page=transfer&amp;sid=' . $sid .
                 '" method="post" name="frm">
 <table>
 <tr>
-<th>Empf&auml;nger:</th>
+<th>Empfänger:</th>
 <td><input type="radio" checked="checked" name="reciptype" value="cluster" /> Cluster &ndash; Code: <input type="text" name="clustercode" onchange="autosel(this)" maxlength="12" /><br />
 <input type="radio" name="reciptype" value="user" /> Benutzer &ndash; IP: 10.47.<input type="text" name="pcip" onchange="autosel(this)" maxlength="7" />' .
                 $bigacc . '</td>
@@ -480,7 +480,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
 <td><input type="text" name="credits" maxlength="5" value="0" /> Credits</td>
 </tr>
 <tr>
-<td colspan="2"><input type="submit" value="Ausf&uuml;hren" /></td>
+<td colspan="2"><input type="submit" value="Ausführen" /></td>
 </tr>
 </table>
 </form>
@@ -605,7 +605,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                         $dbc->db_query('UPDATE users SET clusterstat=\'' . mysql_escape_string($stat) . '\' WHERE id=' .
                             mysql_escape_string($uix));
                         $cluster['events'] = $gres->nicetime4() . ' [usr=' . $udat['id'] . ']' . $udat['name'] .
-                            '[/usr] erh&auml;lt durch [usr=' . $usrid . ']' . $usr['name'] .
+                            '[/usr] erhält durch [usr=' . $usrid . ']' . $usr['name'] .
                             '[/usr] den Status ' . $ingame->cscodetostring($stat) . '.' . LF . $cluster['events'];
                     }
                 }
@@ -617,7 +617,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             $dbc->db_query('UPDATE clusters SET events=\'' . mysql_escape_string($cluster['events']) .
                 '\' WHERE id=' . $clusterid);
 
-            header('Location: cluster.php?page=members&sid=' . $sid . '&ok=' . urlencode('Die &Auml;nderungen wurden &uuml;bernommen!'));
+            header('Location: cluster.php?page=members&sid=' . $sid . '&ok=' . urlencode('Die änderungen wurden übernommen!'));
         } else
             $gres->no_();
         break;
@@ -653,7 +653,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
   <tr>
   <th>Neue Mitglieder?</th>
   <td><input name="acceptnew" value="yes" type="checkbox"' . $anch .
-                ' /> Sollen Spieler Mitgliedsantr&auml;ge stellen d&uuml;rfen, um dem Cluster beizutreten?</td>
+                ' /> Sollen Spieler Mitgliedsanträge stellen dürfen, um dem Cluster beizutreten?</td>
   </tr>
   <tr>
   <th>Beschreibung:</th>
@@ -683,7 +683,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                 '" /><br />Eine Internet-Adresse mit http:// eingeben.</td>
   </tr>
   <tr>
-  <th>Cluster l&ouml;schen:</th>
+  <th>Cluster löschen:</th>
   <td><input name="delete" value="yes" type="checkbox" /></td>
   </tr>
   <tr>
@@ -712,7 +712,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             while ($data = mysql_fetch_assoc($r))
             {
                 $ingame->addsysmsg($data['id'], 'Dein Cluster ' . $cluster['code'] .
-                    ' wurde gel&ouml;scht! Das passierte durch [usr=' . $usrid . ']' . $usr['name'] .
+                    ' wurde gelöscht! Das passierte durch [usr=' . $usrid . ']' . $usr['name'] .
                     '[/usr] (' . $ingame->cscodetostring($usr['clusterstat']) . ')');
             }
             $gres->deletecluster($usr['cluster']);
@@ -733,16 +733,16 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
 
             if ($usr['clusterstat'] != CS_ADMIN)
             {
-                $gres->simple_message('Nur Clusteradmins k�nnen Cluster l�schen!');
+                $gres->simple_message('Nur Clusteradmins k�nnen Cluster l�schen!');
                 exit;
             }
 
             $layout->createlayout_top();
             echo '<div class="content" id="cluster">
-  <h2>Cluster l&ouml;schen</h2>
-  <h3>Bitte best&auml;tigen!</h3>
+  <h2>Cluster löschen</h2>
+  <h3>Bitte bestätigen!</h3>
   <form action="cluster.php?page=delcluster&amp;sid=' . $sid . '" method="post">
-  <p><strong>Setz den Haken und klick auf "Weiter" um den Cluster endg&uuml;ltig zu l&ouml;schen!</strong></p>
+  <p><strong>Setz den Haken und klick auf "Weiter" um den Cluster endgültig zu löschen!</strong></p>
   <p><input type="checkbox" value="yes" name="delete" /></p>
   <p><input type="submit" value=" Weiter " /></p>
   </form>
@@ -764,12 +764,12 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             if (trim($code) == '')
             {
                 $e = true;
-                $msg .= 'Das Feld Code muss ein K&uuml;rzel f&uuml;r den Cluster enthalten!<br />';
+                $msg .= 'Das Feld Code muss ein Kürzel für den Cluster enthalten!<br />';
             }
             if (trim($name) == '')
             {
                 $e = true;
-                $msg .= 'Das Feld Name muss einen Namen f&uuml;r den Cluster enthalten!<br />';
+                $msg .= 'Das Feld Name muss einen Namen für den Cluster enthalten!<br />';
             }
             if (preg_match('/[;<>"]/', $name) != false)
             {
@@ -795,7 +795,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                 if ($c != false && $c['id'] != $cluster['id'])
                 {
                     $e = true;
-                    $msg = 'Ein Cluster mit diesem Code existiert bereits! Bitte einen anderen w�hlen!';
+                    $msg = 'Ein Cluster mit diesem Code existiert bereits! Bitte einen anderen w�hlen!';
                 }
             }
 
@@ -819,7 +819,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                 $cluster['logofile'] = $gres->safeentities($logo);
                 $cluster['homepage'] = $gres->safeentities($hp);
                 $cluster->savemycluster();
-                header('Location: cluster.php?page=config&ok=' . urlencode('Die ge&auml;nderten Einstellungen wurden &uuml;bernommen!') .
+                header('Location: cluster.php?page=config&ok=' . urlencode('Die geänderten Einstellungen wurden übernommen!') .
                     '&sid=' . $sid);
             }
 
@@ -835,12 +835,12 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
         if (trim($code) == '')
         {
             $e = true;
-            $msg .= 'Das Feld Code muss ein K&uuml;rzel f&uuml;r den Cluster enthalten!<br />';
+            $msg .= 'Das Feld Code muss ein Kürzel für den Cluster enthalten!<br />';
         }
         if (trim($name) == '')
         {
             $e = true;
-            $msg .= 'Das Feld Name muss einen Namen f&uuml;r den Cluster enthalten!<br />';
+            $msg .= 'Das Feld Name muss einen Namen für den Cluster enthalten!<br />';
         }
         if (eregi('(;|\<|\>|\\")', $name) != false)
         {
@@ -857,7 +857,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
         if (!(strlen($code) <= 12 and strlen($name) <= 48 and strlen($pwd) <= 16))
         {
             $e = true;
-            $msg .= 'Bitte alle drei Felder ausf&uuml;llen!<br />';
+            $msg .= 'Bitte alle drei Felder ausfüllen!<br />';
         }
 
         if ($e == false)
@@ -868,7 +868,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             {
 
                 $events = $gres->nicetime2() . ' Der Cluster wird durch ' . $usr['name'] .
-                    ' gegr&uuml;ndet!';
+                    ' gegründet!';
                 $r = $dbc->db_query('INSERT INTO clusters(id, name, code, events)  VALUES(0, \'' .
                     mysql_escape_string($name) . '\', \'' . mysql_escape_string($code) . '\', \'' .
                     mysql_escape_string($events) . '\');');
@@ -884,7 +884,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
 
                 header('Location: cluster.php?page=start&sid=' . $sid);
             } else
-                $gres->simple_message('Ein Cluster mit diesem K&uuml;rzel existiert bereits!');
+                $gres->simple_message('Ein Cluster mit diesem Kürzel existiert bereits!');
 
         } else
         {
@@ -922,7 +922,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                 if ($oldcluster !== false)
                 {
                     $oldcluster['events'] = $gres->nicetime4() . ' [usr=' . $usrid . ']' . $usr['name'] .
-                        '[/usr] verl&auml;sst den Cluster und wechselt zu [cluster=' . $x['id'] . ']' .
+                        '[/usr] verlässt den Cluster und wechselt zu [cluster=' . $x['id'] . ']' .
                         $x['code'] . '[/cluster].' . LF . $oldcluster['events'];
                     $dbc->db_query('UPDATE clusters SET events=\'' . mysql_escape_string($oldcluster['events']) .
                         '\' WHERE id=' . $oldcluster['id'] . ';');
@@ -956,7 +956,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
         if ($usr['clusterstat'] == CS_ADMIN && $admins < 2)
         {
             echo '<h3>Cluster verlassen</h3>
-<p><div class="error"><h3>Verweigert</h3><p>Du kannst den Cluster nicht verlassen, da du der letzte Admin bist!<br />Du musst den Cluster in den Cluster-Einstellungen aufl&ouml;sen!</p></div>';
+<p><div class="error"><h3>Verweigert</h3><p>Du kannst den Cluster nicht verlassen, da du der letzte Admin bist!<br />Du musst den Cluster in den Cluster-Einstellungen auflösen!</p></div>';
         } else
         {
             echo '<div class="content" id="cluster">
@@ -981,7 +981,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             exit;
 
         $cluster['events'] = $gres->nicetime4() . ' [usr=' . $usrid . ']' . $usr['name'] .
-            '[/usr] verl&auml;sst den Cluster!' . LF . $cluster['events'];
+            '[/usr] verlässt den Cluster!' . LF . $cluster['events'];
         $ingame->setuserval('cluster', '');
         $ingame->setuserval('cm', '');
         $ingame->setuserval('clusterstat', CS_MEMBER);
@@ -1093,7 +1093,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             echo '<div class="content" id="cluster">' . "\n";
             echo '<h2>Cluster</h2>' . "\n";
             echo '<div id="cluster-battles">' . "\n";
-            echo '<h3>Angriffs&uuml;bersicht</h3>' . "\n\n";
+            echo '<h3>Angriffsübersicht</h3>' . "\n\n";
             echo '<p>Es werden alle Angriffe der letzten 24 Stunden angezeigt</p>' . "\n";
             echo '<p><strong>Angriffe <em>durch</em> Mitglieder des Clusters</strong></p>' .
                 "\n";
@@ -1152,7 +1152,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                     '">bearbeiten</a> | <a href="secret.php?sid=' . $sid . '&page=cboard&id=' . $c .
                     '">Cluster-Board</a>
 | <a href="secret.php?sid=' . $sid . '&page=delcluster&id=' . $c .
-                    '">Cluster l�schen!!</a>';
+                    '">Cluster l�schen!!</a>';
             }
 
             if ($cluster['id'] != $usr['cluster'])
@@ -1162,7 +1162,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                     if ($members < MAX_CLUSTER_MEMBERS)
                     {
                         $col = 'green';
-                        $aufnahme = 'M&ouml;glich (<a href="cluster.php?page=request1&amp;sid=' . $sid .
+                        $aufnahme = 'Möglich (<a href="cluster.php?page=request1&amp;sid=' . $sid .
                             '&amp;cluster=' . $cluster['id'] . '">Aufnahmeantrag stellen</a>)';
                     } else
                     {
@@ -1224,7 +1224,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
 
         if (time() < $transfer_ts && $server == $t_limit_server)
         {
-            $gres->simple_message('�berweisungen sind erst ab ' . nicetime($transfer_ts) .
+            $gres->simple_message('�berweisungen sind erst ab ' . nicetime($transfer_ts) .
                 ' erlaubt!');
             exit;
         }
@@ -1239,7 +1239,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
 
             $e = '';
             if ($credits > $cluster['money'])
-                $e = 'Nicht gen&uuml;gend Credits f&uuml;r &Uuml;berweisung vorhanden!';
+                $e = 'Nicht genügend Credits für überweisung vorhanden!';
             switch ($type)
             {
                 case 'user':
@@ -1247,7 +1247,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                     if ($recip === false)
                         $e = 'Ein Computer mit dieser IP existiert nicht!';
                     if ($recip['owner'] == $usrid)
-                        $e = 'Du kannst dir selber kein Geld &uuml;berweisen!';
+                        $e = 'Du kannst dir selber kein Geld überweisen!';
                     break;
                 case 'cluster':
                     $recip = $_POST['clustercode'];
@@ -1255,25 +1255,25 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                     if ($recip === false)
                         $e = 'Ein Cluster mit diesem Code existiert nicht!';
                     if ($recip['id'] == $usr['cluster'])
-                        $e = 'Du kannst kein Geld an deinen eigenen Cluster &uuml;berweisen!';
+                        $e = 'Du kannst kein Geld an deinen eigenen Cluster überweisen!';
                     break;
                 default:
-                    $e = 'Ung&uuml;ltiger Empf&auml;nger-Typ!';
+                    $e = 'Ungültiger Empfänger-Typ!';
                     break;
             }
 
             if ($credits < 100)
-                $e = 'Der Mindestbetrag f&uuml;r eine &Uuml;berweisung sind 100 Credits!';
+                $e = 'Der Mindestbetrag für eine überweisung sind 100 Credits!';
 
             if ($e == '')
             {
                 $tcode = $gres->random_string(16);
                 $fin = 0;
-                $layout->createlayout_top('HackTheNet - Cluster - &Uuml;berweisen');
+                $layout->createlayout_top('HackTheNet - Cluster - überweisen');
                 echo '<div class="content" id="cluster">
 <h2>Cluster</h2>
 <div id="cluster-transfer1">
-<h3>&Uuml;berweisung</h3>
+<h3>überweisung</h3>
 
 <form action="cluster.php?page=transfer2&amp;sid=' . $sid . '"  method="post">
 <input type="hidden" name="tcode" value="' . $tcode . '">';
@@ -1285,7 +1285,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                             ' Credits an den Rechner 10.47.' . $recip['ip'] .
                             ', der <a href="user.php?page=info&user=' . $recip['owner'] . '&sid=' . $sid .
                             '">' . $recip_usr['name'] .
-                            '</a> geh&ouml;rt, &uuml;berwiesen.</strong></p><br />';
+                            '</a> gehört, überwiesen.</strong></p><br />';
 
                         $c = $get->get_Country('id', $recip['country']);
                         $country2 = $c['name'];
@@ -1295,13 +1295,13 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                         {
                             $fin = $rest;
                             $text .= '<p>Von diesem Betrag werden noch ' . $in .
-                                ' Credits Geb&uuml;hren als Einfuhr nach ' . $country2 .
+                                ' Credits Gebühren als Einfuhr nach ' . $country2 .
                                 ', dem Standort von 10.47.' . $recip['ip'] . ' abgezogen. ' . $recip_usr['name'] .
-                                ' erh&auml;lt also noch <b>' . $rest . ' Credits.</p>';
+                                ' erhält also noch <b>' . $rest . ' Credits.</p>';
                         } else
                         {
-                            $text .= '<p>Da der Betrag sehr gering ist, werden keine Geb&uuml;hren erhoben. ' .
-                                $recip_usr['name'] . ' erh&auml;lt <b>' . $credits . ' Credits.</p>';
+                            $text .= '<p>Da der Betrag sehr gering ist, werden keine Gebühren erhoben. ' .
+                                $recip_usr['name'] . ' erhält <b>' . $credits . ' Credits.</p>';
                             $fin = $credits;
                         }
 
@@ -1313,12 +1313,12 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                             $credits = $rest;
                             $text .= '<br /><p>Da ' . $recip_usr['name'] .
                                 ' seinen BucksBunker nicht weit genug ausgebaut hat, um das Geld zu Empfangen, werden nur <b>' .
-                                $rest . ' Credits</b> (inklusive Geb&uuml;hren) &uuml;berwiesen!</p>';
+                                $rest . ' Credits</b> (inklusive Gebühren) überwiesen!</p>';
                         }
                         if ($rest < 1)
                         {
                             echo '<div class="error"><h3>BucksBunker voll</h3><p>Der BucksBunker von ' . $recip_usr['name'] .
-                                ' ist voll! &Uuml;berweisung wird abgebrochen!</p></div>';
+                                ' ist voll! überweisung wird abgebrochen!</p></div>';
                             $layout->createlayout_bottom();
                             exit;
                         }
@@ -1328,11 +1328,11 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                     case 'cluster':
                         echo '<p><strong>Hiermit werden ' . $credits . ' Credits an den Cluster ' .
                             htmlspecialchars($recip['code']) . ' (' . $recip['name'] .
-                            ') &uuml;berwiesen.</strong></p><br />';
+                            ') überwiesen.</strong></p><br />';
                         $fin = $credits;
                         break;
                 }
-                echo '<br /><p><input type="submit" value=" Ausf&uuml;hren "></p></form>';
+                echo '<br /><p><input type="submit" value=" Ausführen "></p></form>';
                 echo '</div></div>';
                 $layout->createlayout_bottom();
                 $get->put_file($DATADIR . '/tmp/transfer_' . $tcode . '.txt', $type . '|' . $recip['id'] .
@@ -1358,7 +1358,7 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
             $fn = $DATADIR . '/tmp/transfer_' . $code . '.txt';
             if ($usr['tcode'] != $code || file_exists($fn) != true)
             {
-                $gres->simple_message('&Uuml;berweisung ung&uuml;ltig! Bitte neu erstellen!');
+                $gres->simple_message('überweisung ungültig! Bitte neu erstellen!');
                 break;
             }
             $dat = explode('|', $get->get_file($fn));
@@ -1375,36 +1375,36 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
                         '\' WHERE id=' . mysql_escape_string($dat[1]));
                     $s = 'Der Cluster [cluster=' . $clusterid . ']' . $cluster['code'] .
                         '[/cluster] hat dir ' . $dat[2] . ' Credits auf deinen PC 10.47.' . $recip['ip'] .
-                        ' (' . $recip['name'] . ') &uuml;berwiesen.';
+                        ' (' . $recip['name'] . ') überwiesen.';
                     if ($dat[2] != $dat[3])
-                        $s .= ' Abz&uuml;glich der Geb&uuml;hren hast du ' . $dat[3] .
+                        $s .= ' Abzüglich der Gebühren hast du ' . $dat[3] .
                             ' Credits erhalten!';
                     $ingame->addsysmsg($recip['owner'], $s);
                     $recip_usr = $get->get_User($recip['owner']);
                     $cluster['events'] = $gres->nicetime4() . ' [usr=' . $usrid . ']' . $usr['name'] .
                         '[/usr] hat ' . $dat[2] . ' Credits an [usr=' . $recip_usr['id'] . ']' . $recip_usr['name'] .
-                        '[/usr] �berwiesen.' . LF . $cluster['events'];
+                        '[/usr] �berwiesen.' . LF . $cluster['events'];
                     $dbc->db_query('UPDATE clusters SET money=\'' . mysql_escape_string($cluster['money']) .
                         '\',events=\'' . mysql_escape_string($cluster['events']) . '\' WHERE id=' .
                         mysql_escape_string($cluster['id']));
-                    $msg = '&Uuml;berweisung an 10.47.' . $recip['ip'] . ' (' . $recip['name'] .
-                        ') ausgef&uuml;hrt!';
+                    $msg = 'überweisung an 10.47.' . $recip['ip'] . ' (' . $recip['name'] .
+                        ') ausgeführt!';
                 } elseif ($dat[0] == 'cluster')
                 {
                     $c = $get->get_cluster($dat[1]);
                     $c['money'] += $dat[3];
                     $cluster['events'] = nicetime4() . ' [usr=' . $usrid . ']' . $usr['name'] .
-                        '[/usr] �berweist ' . $dat[3] . ' Credits an den Cluster [cluster=' . $c['id'] .
+                        '[/usr] �berweist ' . $dat[3] . ' Credits an den Cluster [cluster=' . $c['id'] .
                         ']' . $c['code'] . '[/cluster]' . LF . $cluster['events'];
                     $c[events] = nicetime4() . ' Der Cluster [cluster=' . $clusterid . ']' . $cluster['code'] .
-                        '[/cluster] �berweist dem Cluster ' . $dat[3] . ' Credits.' . LF . $c['events'];
+                        '[/cluster] �berweist dem Cluster ' . $dat[3] . ' Credits.' . LF . $c['events'];
                     $dbc->db_query('UPDATE clusters SET money=\'' . mysql_escape_string($c['money']) . '\',events=\'' .
                         mysql_escape_string($c['events']) . '\' WHERE id=' . mysql_escape_string($dat[1]));
                     $dbc->db_query('UPDATE clusters SET money=\'' . mysql_escape_string($cluster['money']) .
                         '\',events=\'' . mysql_escape_string($cluster['events']) . '\' WHERE id=' .
                         mysql_escape_string($cluster['id']));
                     $msg = 'Dem Cluster ' . $c['code'] . ' wurden ' . $dat[2] .
-                        ' Credits &uuml;berwiesen!';
+                        ' Credits überwiesen!';
                 }
                 $dbc->db_query('INSERT INTO transfers VALUES(\'' . $clusterid . '\', \'cluster\', \'' .
                     $usrid . '\', \'' . mysql_escape_string($dat[1]) . '\', \'' .
@@ -1433,8 +1433,8 @@ function autosel(obj) { var i = (obj.name==\'pcip\' ? 1 : 0);
 <input type="hidden" name="cluster" value="' . $c['id'] . '">
 <p>
 <textarea name="comment" rows=8 cols=50>Hallo!
-Ich bin ' . $usr['name'] . ' und w&uuml;rde gerne eurem Cluster beitreten.
-W&auml;re sch&ouml;n, wenn das ginge.
+Ich bin ' . $usr['name'] . ' und würde gerne eurem Cluster beitreten.
+Wäre schön, wenn das ginge.
 
 Also bis dann
 ' . $usr['name'] . '</textarea><br /><br />
@@ -1465,7 +1465,7 @@ Du wirst dann per System-Nachricht informiert, ob du aufgenommen wurdest oder ni
 <h3>Aufnahmeantrag stellen</h3>
 <p><b>Der Antrag auf Aufnahme in den Cluster <a href="cluster.php?sid=' . $sid .
             '&cluster=' . $c['id'] . '&page=info">' . $c['code'] . '</a> wurde abgesandt.
-Wenn ein Admin oder ein Mitgliederminister des Clusters &uuml;ber deine Aufnahme entschieden
+Wenn ein Admin oder ein Mitgliederminister des Clusters über deine Aufnahme entschieden
 hat, wirst du per System-Nachricht informiert.</b></p>
 </div></div>';
         $layout->createlayout_bottom();
@@ -1475,15 +1475,15 @@ hat, wirst du per System-Nachricht informiert.</b></p>
         if ($usr['clusterstat'] == CS_ADMIN || $usr['clusterstat'] ==
             CS_MITGLIEDERMINISTER || $usr['clusterstat'] == CS_COADMIN):
 
-            $layout->createlayout_top('HackTheNet - Cluster - Mitgliedsantr&auml;ge verwalten');
+            $layout->createlayout_top('HackTheNet - Cluster - Mitgliedsanträge verwalten');
             echo '<div class="content" id="cluster">
 <h2>Cluster</h2>
 <div id="cluster-request-administration">
-<h3>Aufnahmeantr&auml;ge</h3>
+<h3>Aufnahmeanträge</h3>
 ' . $notif . '
 <form action="cluster.php?page=savereqverw&sid=' . $sid . '" method="post">
 <table cellpadding="3" cellspacing="2">
-<tr><th>Spieler</th><th>Punkte</th><th>Kommentar</th><th>Aufnehmen</th><th>Ablehnen</th><th>Nicht &auml;ndern</th></tr>';
+<tr><th>Spieler</th><th>Punkte</th><th>Kommentar</th><th>Aufnehmen</th><th>Ablehnen</th><th>Nicht ändern</th></tr>';
 
             $r = $dbc->db_query('SELECT * FROM cl_reqs WHERE cluster=' . $clusterid .
                 ' AND dealed=\'no\'');
@@ -1506,7 +1506,7 @@ hat, wirst du per System-Nachricht informiert.</b></p>
                 echo '</tr>';
             }
 
-            echo '<tr><th colspan="6" align="right"><input type="submit" value=" &Uuml;bernehmen "></th></tr>
+            echo '<tr><th colspan="6" align="right"><input type="submit" value=" übernehmen "></th></tr>
 </table></form>
 </div></div>';
             $layout->createlayout_bottom();
@@ -1557,7 +1557,7 @@ hat, wirst du per System-Nachricht informiert.</b></p>
                     $clusterid);
             }
 
-            header('Location: cluster.php?sid=' . $sid . '&page=req_verw&ok=' . urlencode('Die Aufnahmeantr&auml;ge wurden bearbeitet!'));
+            header('Location: cluster.php?sid=' . $sid . '&page=req_verw&ok=' . urlencode('Die Aufnahmeanträge wurden bearbeitet!'));
 
         endif;
         break;
@@ -1572,7 +1572,7 @@ hat, wirst du per System-Nachricht informiert.</b></p>
         $layout->createlayout_top('HackTheNet - Cluster-Notiz');
         echo '<div class="content" id="cluster-notice-saved">' . "\n";
         echo '<h2>Cluster-Notiz</h2>' . "\n";
-        echo '<div class="ok">' . LF . '<h3>Aktion ausgef�hrt</h3>' . LF .
+        echo '<div class="ok">' . LF . '<h3>Aktion ausgef�hrt</h3>' . LF .
             '<p>Notiz gespeichert!</p></div>';
         echo '</div>';
         $layout->createlayout_bottom();

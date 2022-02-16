@@ -61,7 +61,7 @@ $v=$pc['mk']; $weapons='';
   if(isavailh('scan',$pc)==true) { $weapons.='<tr class="greytr2"><td nowrap="nowrap">REMOTE SCAN</td><td><tt>REMOTE SCAN</tt></td><td>Spioniert fremde Rechner aus</td><td>Waffe</td></tr>'; }
   if(isavailh('trojan',$pc)==true) {
     $tEx='<table style="font-size:8pt;" class="nomargin">';
-    if(tisavail('defacement')==true) $tEx.='<tr><td nowrap="nowrap"><tt>TROJAN DEFACEMENT</tt></td><td>Du kannst die Beschreibung des gegnerischen Users &auml;ndern</td></tr>';
+    if(tisavail('defacement')==true) $tEx.='<tr><td nowrap="nowrap"><tt>TROJAN DEFACEMENT</tt></td><td>Du kannst die Beschreibung des gegnerischen Users ändern</td></tr>';
     if(tisavail('transfer')==true) $tEx.='<tr><td nowrap="nowrap"><tt>TROJAN TRANSFER</tt></td><td>Klaut Geld</td></tr>';
     if(tisavail('deactivate')==true) $tEx.='<tr><td nowrap="nowrap"><tt>TROJAN DEACTIVATE FIREWALL</tt></td><td>Deaktiviert die Firewall</td></tr>
       <tr><td nowrap="nowrap"><tt>TROJAN DEACTIVATE AV</tt></td><td>Deaktiviert das Antivirus-Program</td></tr>
@@ -72,13 +72,13 @@ $v=$pc['mk']; $weapons='';
   if(isavailh('smash',$pc)==true) { $weapons.='<tr class="greytr2"><td nowrap="nowrap">REMOTE SMASH [ITEM]</td><td nowrap><tt>REMOTE SMASH CPU</tt><br /> oder
     <tt>REMOTE SMASH FIREWALL</tt><br /> oder
     <tt>REMOTE SMASH SDK</tt>
-    </td><td>Zerst&ouml;rt Prozessor (CPU), Firewall (FIREWALL) oder SDK (SDK) von fremden Rechnern</td><td>Waffe</td></tr>'; }
-  if(isavailh('block',$pc)==true) { $weapons.='<tr class="greytr2"><td nowrap="nowrap">REMOTE BLOCK</td><td><tt>REMOTE BLOCK</tt></td><td>Blockiert Computer f&uuml;r dessen Besitzer</td><td>Waffe</td></tr>'; }
+    </td><td>Zerstört Prozessor (CPU), Firewall (FIREWALL) oder SDK (SDK) von fremden Rechnern</td><td>Waffe</td></tr>'; }
+  if(isavailh('block',$pc)==true) { $weapons.='<tr class="greytr2"><td nowrap="nowrap">REMOTE BLOCK</td><td><tt>REMOTE BLOCK</tt></td><td>Blockiert Computer für dessen Besitzer</td><td>Waffe</td></tr>'; }
 
-  if(isavailh('rh',$pc)==true) { $weapons.='<tr class="greytr2"><td nowrap="nowrap">REMOTE HIJACK</td><td><tt>REMOTE HIJACK</tt></td><td>Versucht, den Computer des Gegners zu &uuml;bernehmen</td><td>Waffe</td></tr>'; }
+  if(isavailh('rh',$pc)==true) { $weapons.='<tr class="greytr2"><td nowrap="nowrap">REMOTE HIJACK</td><td><tt>REMOTE HIJACK</tt></td><td>Versucht, den Computer des Gegners zu übernehmen</td><td>Waffe</td></tr>'; }
 
 #  <tr><td colspan="4"><sup>1)</sup> Diese Waffe kann entweder alleine oder zusammen mit dem Scan eingesetzt werden.
-#Eine Kombination zwischen dieser und einer anderen ist jedoch nicht m&ouml;glich.</td></tr>
+#Eine Kombination zwischen dieser und einer anderen ist jedoch nicht möglich.</td></tr>
 
 echo '<p><b>Geld: '.$bucks.' Credits</b></p><br />
 <form action="battle.php?sid='.$sid.'&action=opc_submit"  method="post" name="frm">
@@ -199,17 +199,17 @@ $text='';
 $target=trim($target," \n\r\x0b\0\t");
 if(eregi('^10\\.47\\.([0-9]{2,3})\\.([0-9]{1,3})$',$target)==true) {
   $target=getpc(substr($target,6),'ip');
-  if($target===false) $e.='Ung&uuml;ltige Ziel-Adresse: Der PC existiert nicht!<br />';
-} else $e.='Ung&uuml;ltige Ziel-Adresse: IP-Adresse muss in der Form 10.47.x.x vorliegen!<br />';
+  if($target===false) $e.='Ungültige Ziel-Adresse: Der PC existiert nicht!<br />';
+} else $e.='Ungültige Ziel-Adresse: IP-Adresse muss in der Form 10.47.x.x vorliegen!<br />';
 
 #if(is_noranKINGuser($target['owner']) && $localhost==false) { $e.='Du kannst keinen Administrator des Spiels angreifen!<br />'; }
 if($localhost==false) { if($target[owner]==$usrid) $e.='Du kannst dich nicht selber angreifen!<br />'; }
 
-if($scan & isavailh('scan',$pc)==false) $e.='Der Scan ist noch nicht verf&uuml;gbar!<br />';
-if($trojan & isavailh('trojan',$pc)==false) $e.='Der Trojaner ist noch nicht verf&uuml;gbar!<br />';
-if($block & isavailh('block',$pc)==false) $e.='<tt>REMOTE BLOCK</tt> ist noch nicht verf&uuml;gbar!<br />';
-if($smash & isavailh('smash',$pc)==false) $e.='<tt>REMOTE SMASH</tt> ist noch nicht verf&uuml;gbar!<br />';
-if($hijack & isavailh('rh',$pc)==false) $e.='<tt>REMOTE HIJACK</tt> ist noch nicht verf&uuml;gbar!<br />';
+if($scan & isavailh('scan',$pc)==false) $e.='Der Scan ist noch nicht verfügbar!<br />';
+if($trojan & isavailh('trojan',$pc)==false) $e.='Der Trojaner ist noch nicht verfügbar!<br />';
+if($block & isavailh('block',$pc)==false) $e.='<tt>REMOTE BLOCK</tt> ist noch nicht verfügbar!<br />';
+if($smash & isavailh('smash',$pc)==false) $e.='<tt>REMOTE SMASH</tt> ist noch nicht verfügbar!<br />';
+if($hijack & isavailh('rh',$pc)==false) $e.='<tt>REMOTE HIJACK</tt> ist noch nicht verfügbar!<br />';
 
 if($hijack & ($trojan || $scan || $smash || $block)) { $e.='Der Hijack kann nur alleine eingesetzt werden!<br />'; }
 if($trojan & ($smash || $block || $scan)) { $e.='Der Trojaner kann nur alleine eingesetzt werden!<br />'; }
@@ -224,7 +224,7 @@ if($GAME_MODE == '2.1')
   if($hijack && count(explode(',', $usr['pcs'])) >= MAX_PCS_PER_USER) $e.='Du hast bereits die maximale Anzahl von PCs erreicht!<br />';
 }
 
-if($hijack && ($pc['lrh']+REMOTE_HIJACK_DELAY>time() && $localhost==false)) $e.='Du kannst immer nur einen <tt>REMOTE HIJACK</tt>-Angriff innerhalb von zwei Tagen ausf&uuml;hren!<br />';
+if($hijack && ($pc['lrh']+REMOTE_HIJACK_DELAY>time() && $localhost==false)) $e.='Du kannst immer nur einen <tt>REMOTE HIJACK</tt>-Angriff innerhalb von zwei Tagen ausführen!<br />';
 
 if($smash)
 {
@@ -234,7 +234,7 @@ if($smash)
     case 'FIREWALL': break;
     case 'SDK': break;
     default:
-    $e.='Unbekannte Option f&uuml;r <tt>REMOTE SMASH</tt>: <i>'.$opt.'</i>!<br />';
+    $e.='Unbekannte Option für <tt>REMOTE SMASH</tt>: <i>'.$opt.'</i>!<br />';
   }
 }
 
@@ -243,33 +243,33 @@ if($trojan)
   switch($opt)
   {
     case 'DEFACEMENT':
-      if(tisavail('defacement')==false) $e.='Defacement ist noch nicht verf&uuml;gbar!<br />';
+      if(tisavail('defacement')==false) $e.='Defacement ist noch nicht verfügbar!<br />';
       break;
     case 'TRANSFER':
-      if(tisavail('transfer')==false) $e.='Geld klauen ist noch nicht verf&uuml;gbar!<br />';
+      if(tisavail('transfer')==false) $e.='Geld klauen ist noch nicht verfügbar!<br />';
       break;
     case 'DEACTIVATE FIREWALL':
-      if(tisavail('deactivate')==false) $e.='Deaktivierung ist noch nicht verf&uuml;gbar!<br />';
+      if(tisavail('deactivate')==false) $e.='Deaktivierung ist noch nicht verfügbar!<br />';
       break;
     case 'DEACTIVATE AV':
-      if(tisavail('deactivate')==false) $e.='Deaktivierung ist noch nicht verf&uuml;gbar!<br />';
+      if(tisavail('deactivate')==false) $e.='Deaktivierung ist noch nicht verfügbar!<br />';
       break;
     case 'DEACTIVATE IDS':
-      if(tisavail('deactivate')==false) $e.='Deaktivierung ist noch nicht verf&uuml;gbar!<br />';
+      if(tisavail('deactivate')==false) $e.='Deaktivierung ist noch nicht verfügbar!<br />';
       break;
     default:
-    $e.='Unbekannte Option f&uuml;r den Trojaner: <i>'.$opt.'</i>!<br />';
+    $e.='Unbekannte Option für den Trojaner: <i>'.$opt.'</i>!<br />';
   }
 }
 
 # Durch Trojaner deaktivierte Items beachten!!
 if($target['di']!='' && $target['dt']>time() && $trojan==1 && substr($opt,0,10)=='DEACTIVATE')
 {
-  $e.='Auf dem Zielrechner ist bereits ein Item deaktiviert! Es k&ouml;nnen nicht gleichzeitig mehrere Items auf einem PC deaktiviert sein!<br />';
+  $e.='Auf dem Zielrechner ist bereits ein Item deaktiviert! Es können nicht gleichzeitig mehrere Items auf einem PC deaktiviert sein!<br />';
 }
 
 $owner=@getuser($target['owner']);
-#if($owner['cluster'] == $no_ranking_cluster) $e.='Mitglieder dieses Clusters k�nnen nicht angegriffen werden!';
+#if($owner['cluster'] == $no_ranking_cluster) $e.='Mitglieder dieses Clusters k�nnen nicht angegriffen werden!';
 
 if($owner!=false && $owner['login_time']+MIN_INACTIVE_TIME > time() && substr_count($owner['pcs'],',')<2)
 {
@@ -305,29 +305,29 @@ $country2=$c['name']; $in=$c['in']*9;
 $cost=$in+$out;
 if($country==$country2) $cost=0;
 
-if($pc['credits']-$cost<0 && $country!=$country2) $e.='Nicht gen&uuml;gend Credits! Dieser Angriff w&uuml;rde '.$cost.' Credits kosten, du hast aber nur '.$pc['credits'].' Credits!<br />';
+if($pc['credits']-$cost<0 && $country!=$country2) $e.='Nicht genügend Credits! Dieser Angriff würde '.$cost.' Credits kosten, du hast aber nur '.$pc['credits'].' Credits!<br />';
 
 #if(($e=='' && $scan==0) & ($owner['points']<MIN_ATTACK_POINTS && $owner['login_time']+MIN_INACTIVE_TIME>time())) $e.='Du kannst keinen User mit weniger als 100 Punkten angreifen, der sich in den letzten 3 Tagen eingeloggt hat!<br />';
 
 if($e=='')
 {
-  $text='<h3>Angriff best&auml;tigen</h3><table>
+  $text='<h3>Angriff bestätigen</h3><table>
 <tr><th>Angriffsdetails</th></tr>
 <tr><td>
-<ul><li><b>Der Angriff richtet sich gegen 10.47.'.$target['ip'].' ('.$target['name'].'). Dieser Rechner geh&ouml;rt ';
+<ul><li><b>Der Angriff richtet sich gegen 10.47.'.$target['ip'].' ('.$target['name'].'). Dieser Rechner gehört ';
 if($owner!==false) $text.='<a href="user.php?a=info&amp;user='.$target['owner'].'&amp;sid='.$sid.'" target="_blank">'.$owner['name'].'</a>';
 else $text.='niemandem';
   $text.='.</b></li>';
 
   if($country!=$country2) {
-    $text.='<li>Es fallen '.$cost.' Credits Geb&uuml;hren f&uuml;r den Angriff an. '.$out.' Credits Ausfuhr aus '.$country.' und '.$in.' Credits Einfuhr nach '.$country2.'.</li>';
+    $text.='<li>Es fallen '.$cost.' Credits Gebühren für den Angriff an. '.$out.' Credits Ausfuhr aus '.$country.' und '.$in.' Credits Einfuhr nach '.$country2.'.</li>';
   } else $cost=0;
 
   if($msg!='') $text.='<li><b>Kommentar:</b><br /><tt>'.nl2br($msg).'</tt></li>';
   if($scan) $text.='<li>Es wird <tt>REMOTE SCAN</tt> eingesetzt, um den Rechner auszuspionieren!</li>';
   if($trojan) {
     switch($opt) {
-      case 'DEFACEMENT': $s='die Beschreibung des Gegners zu &auml;ndern'; break;
+      case 'DEFACEMENT': $s='die Beschreibung des Gegners zu ändern'; break;
       case 'TRANSFER': $s='Geld zu klauen'; break;
       case 'DEACTIVATE FIREWALL': $s='die Firewall zu deaktivieren'; break;
       case 'DEACTIVATE AV': $s='das Anti-Virus-Programm zu deaktivieren'; break;
@@ -341,7 +341,7 @@ else $text.='niemandem';
       case 'FIREWALL': $modul='die Firewall'; break;
       case 'SDK': $modul='das SDK'; break;
     }
-    $text.='<li>Es wird <tt>REMOTE SMASH</tt> eingesetzt, um <b>'.$modul.'</b> zu schw&auml;chen!</li>';
+    $text.='<li>Es wird <tt>REMOTE SMASH</tt> eingesetzt, um <b>'.$modul.'</b> zu schwächen!</li>';
   }
   if($block) $text.='<li>Es wird <tt>REMOTE BLOCK</tt> eingesetzt, um den feindlichen Rechner zu blockieren.</li>';
   if($hijack) $text.='<li>Es wird <tt>REMOTE HIJACK</tt> eingesetzt.</li>';
@@ -359,7 +359,7 @@ else $text.='niemandem';
   $a="pre_execute";
   #if($localhost) $a='execute';
 } else {
-  $text='<div class="error"><h3>Fehler</h3><p>'.$e.'</p></div><br /><p><input type="submit" value=" Zur&uuml;ck " /></p>';
+  $text='<div class="error"><h3>Fehler</h3><p>'.$e.'</p></div><br /><p><input type="submit" value=" Zurück " /></p>';
   $a='opc#codebox';
 }
 #$emsg.='<br />';
@@ -385,7 +385,7 @@ case 'pre_execute': // ---------------------- PRE_EXECUTE ----------------------
 
 $code=$_POST[acode];
 
-if(file_exists($DATADIR.'/tmp/attack_'.$code.'.txt')==false || $code!=$usr['acode']) { simple_message('Angriff ung&uuml;ltig. Bitte neu erstellen!'); exit; }
+if(file_exists($DATADIR.'/tmp/attack_'.$code.'.txt')==false || $code!=$usr['acode']) { simple_message('Angriff ungültig. Bitte neu erstellen!'); exit; }
 
 list($target,$scan,$trojan,$smash,$block,$hijack,$opt,$msg,$cost,$pcidnew)=explode('|',file_get($DATADIR.'/tmp/attack_'.$code.'.txt'));
 
@@ -420,7 +420,7 @@ createlayout_top('HackTheNet - Operation Center', false, false);
 echo '<div class="content" id="attacks">';
 echo '<h2>Operation Center</h2>';
 echo '<div id="attacks-attack3">';
-echo '<h3>Angriff l&auml;uft...</h3>';
+echo '<h3>Angriff läuft...</h3>';
 
 
 echo '<form action="battle.php?a=execute&amp;sid='.$sid.'" method="post"><input type="hidden" name="acode" value="'.$code.'"></form>
@@ -447,7 +447,7 @@ if(!isattackallowed($b,$d)) { simple_message('Ne ne ne!!','error'); exit; }
 
 if($localhost!=true || $usrid!=30 ) @unlink($fn);
 
-if(trim($msg)!='') $msg='<br />Der Angreifer hat folgende Nachricht f&uuml;r dich:<br /><tt>'.nl2br($msg).'</tt>';
+if(trim($msg)!='') $msg='<br />Der Angreifer hat folgende Nachricht für dich:<br /><tt>'.nl2br($msg).'</tt>';
 
 $ts=time();
 db_query('UPDATE pcs SET la=\''.mysql_escape_string($ts).'\' WHERE id='.$pcid);
@@ -462,7 +462,7 @@ $local2=$local;
 
 if($remote['di']!='' && $remote['dt']>time() && $trojan==1 && substr($opt,0,10)=='DEACTIVATE')
 {
-  simple_message('Auf dem Zielrechner ist bereits ein Item deaktiviert! Es k&ouml;nnen nicht gleichzeitig mehrere Items auf einem PC deaktiviert sein!<br />');
+  simple_message('Auf dem Zielrechner ist bereits ein Item deaktiviert! Es können nicht gleichzeitig mehrere Items auf einem PC deaktiviert sein!<br />');
   exit;
 }
 
@@ -496,16 +496,16 @@ function getsuccess($attack,$defend,$margin=50) {
   $noticed=0;
   $success=0;
   mt_srand();
-  if($attack<$defend) { # Angriff schw�cher
-    if($attack+$margin<$defend) { # Angriff viel schw�cher
+  if($attack<$defend) { # Angriff schw�cher
+    if($attack+$margin<$defend) { # Angriff viel schw�cher
       $success=0;  $noticed=1;
-    } else { # kein gro�er Unterschied
+    } else { # kein gro�er Unterschied
       $success=mt_rand(0,1);  $noticed=1;
     }
-  } else { # Angriff st�rker
-    if($attack-$margin>$defend) { # Angriff viel st�rker
+  } else { # Angriff st�rker
+    if($attack-$margin>$defend) { # Angriff viel st�rker
       $success=1;  $noticed=0;
-    } else { # kein gro�er Unterschied
+    } else { # kein gro�er Unterschied
       $success=1;  $noticed=1;
     }
   }
@@ -537,16 +537,16 @@ if($scan==1) { // ------------ SCAN ------------
   echo '<p>';
   if($success==0) {
     echo '<span style="color:red;"><b>Der Angriff wurde abgewehrt!</b></span><br />';
-    if($noticed==0) { echo 'Du hattest aber Gl&uuml;ck und wurdest nicht erkannt!';
-    addsysmsg($remote['owner'],'Auf deinen Rechner 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein Spionage-Angriff ver&uuml;bt!<br />Er wurde abgeblockt!<br />Der Feind konnte nicht identifiziert werden!'.$msg); 
+    if($noticed==0) { echo 'Du hattest aber Glück und wurdest nicht erkannt!';
+    addsysmsg($remote['owner'],'Auf deinen Rechner 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein Spionage-Angriff verübt!<br />Er wurde abgeblockt!<br />Der Feind konnte nicht identifiziert werden!'.$msg); 
   } else { 
     echo 'Du konntest nicht anonym bleiben!';
-    addsysmsg($remote['owner'],'Auf deinen Rechner 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein Spionage-Angriff ver&uuml;bt!<br />Er konnte aber abgeblockt werden!<br />Der Feind wurde als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert.'.$msg); }
+    addsysmsg($remote['owner'],'Auf deinen Rechner 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein Spionage-Angriff verübt!<br />Er konnte aber abgeblockt werden!<br />Der Feind wurde als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert.'.$msg); }
   } else {
     echo '<span style="color:green;"><b>Der Angriff war erfolgreich!</b></span><br />';
     if($noticed==0) echo 'Du wurdest au&szlig;erdem nicht bemerkt!';
     else { echo 'Du konntest aber nicht anonym bleiben!';
-    addsysmsg($remote['owner'],'Auf deinen Rechner 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein Spionage-Angriff ver&uuml;bt!<br />Er war erfolgreich!<br />Der Feind konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!'.$msg); }
+    addsysmsg($remote['owner'],'Auf deinen Rechner 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein Spionage-Angriff verübt!<br />Er war erfolgreich!<br />Der Feind konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!'.$msg); }
     echo '<br /><br />Ein Bericht wurde dir als System-Nachricht zugestellt.';
     $owner=getuser($remote[owner]);
     addsysmsg($usrid,'<b>Spionage-Bericht von 10.47.'.$remote['ip'].'</b> Besitzer: [usr='.$owner['id'].']'.$owner['name'].'[/usr]<br />
@@ -583,7 +583,7 @@ if($scan==1) { // ------------ SCAN ------------
     {
       $t=time()+$t*60;
       echo '<span style="color:green;font-weight:bold;">Angriff erfolgreich! '.idtoname($key).' blockiert bis '.nicetime($t).'!</span><br />';
-      $s='Auf deinen PC 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein erfolgreicher Angriff ver&uuml;bt: '.idtoname($key).' ist blockiert bis '.nicetime($t).'!<br />';
+      $s='Auf deinen PC 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde ein erfolgreicher Angriff verübt: '.idtoname($key).' ist blockiert bis '.nicetime($t).'!<br />';
       #$remote2[di]=$key; $remote2[dt]=$t;
       db_query('UPDATE pcs SET di=\''.mysql_escape_string($key).'\', dt=\''.mysql_escape_string($t).'\' WHERE id='.mysql_escape_string($remote['id']).';');
     }
@@ -627,21 +627,21 @@ if($scan==1) { // ------------ SCAN ------------
           $u=getuser($remote['owner']);
           $text=htmlspecialchars($u['text']);
           echo '<span style="color:green;"><b>Angriff erfolgreich!</b></span>
-<b>Du kannst jetzt die Beschreibung &auml;ndern:</b>
+<b>Du kannst jetzt die Beschreibung ändern:</b>
 <form action="battle.php?sid='.$sid.'&a=chtext&code='.$code.'"  method="post">
 <textarea rows=6 cols=70 name="text">'.$text.'</textarea>
 <br /><input type=submit value="Speichern">
 </form>';
           if($noticed==1) { echo 'Du wurdest bemerkt und erkannt!';
-          addsysmsg($remote['owner'],'Auf dich wurde ein erfolgreicher Defacement-Angriff ver&uuml;bt!<br />Der Feind konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!'.$msg);
+          addsysmsg($remote['owner'],'Auf dich wurde ein erfolgreicher Defacement-Angriff verübt!<br />Der Feind konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!'.$msg);
           } else {
             echo 'Du wurdest bemerkt, aber nicht erkannt!';
-            addsysmsg($remote['owner'],'Auf dich wurde ein erfolgreicher Defacement-Angriff ver&uuml;bt!<br />Der Feind konnte nicht identifiziert werden!'.$msg);
+            addsysmsg($remote['owner'],'Auf dich wurde ein erfolgreicher Defacement-Angriff verübt!<br />Der Feind konnte nicht identifiziert werden!'.$msg);
           }
         } else {
           echo '<span style="color:red;font-weight:bold;"><b>Der Angriff war NICHT erfolgreich!</b></span><br />';
           if($noticed==1) {
-            addsysmsg($remote['owner'],'Es wurde erfolglos versucht, dich mit einem Defacement-Angriff zu schm&auml;hen!<br />Der Feind konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!'.$msg);
+            addsysmsg($remote['owner'],'Es wurde erfolglos versucht, dich mit einem Defacement-Angriff zu schmähen!<br />Der Feind konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!'.$msg);
             echo 'Du wurdest bemerkt und erkannt!';
           } else {
             echo 'Du wurdest nicht bemerkt!';
@@ -744,7 +744,7 @@ if($scan==1) { // ------------ SCAN ------------
     echo '<h3>Remote Smash</h3>';
     echo '<p>';
     #echo '<tt>defend = '.$defend.' :: attack = '.$attack.'<br></tt>';
-    $s='Auf deinen PC 10.47.'.mysql_escape_string($remote['ip']).' ('.mysql_escape_string($remote['name']).') wurde ein SMASH-Angriff ver&uuml;bt! ';
+    $s='Auf deinen PC 10.47.'.mysql_escape_string($remote['ip']).' ('.mysql_escape_string($remote['name']).') wurde ein SMASH-Angriff verübt! ';
     if($success == 1)
     {
       $min=0;
@@ -762,7 +762,7 @@ if($scan==1) { // ------------ SCAN ------------
       }
       echo '<span style="color:green;font-weight:bold;">Angriff erfolgreich! ';
       if($min==1) {
-        $xs=idtoname($key).' konnte aber nicht weiter zerst&ouml;rt werden, da das niedriegste Level schon erreicht wurde!';
+        $xs=idtoname($key).' konnte aber nicht weiter zerstört werden, da das niedriegste Level schon erreicht wurde!';
         echo $xs.'</span><br />';
         $s.=$xs.'<br />';
       } else {
@@ -772,9 +772,9 @@ if($scan==1) { // ------------ SCAN ------------
         }
         savepc($target,$remote2);
         
-        if($key=='cpu') $newval=$cpu_levels[$newval]; // nur f�r Meldung!
-        $s.=idtoname($key).' wurde zerst&ouml;rt auf '.$newval.'!<br />';
-        echo idtoname($key).' zerst&ouml;rt auf '.$newval.'!</span><br />';
+        if($key=='cpu') $newval=$cpu_levels[$newval]; // nur f�r Meldung!
+        $s.=idtoname($key).' wurde zerstört auf '.$newval.'!<br />';
+        echo idtoname($key).' zerstört auf '.$newval.'!</span><br />';
       }
 
     } else {
@@ -872,13 +872,13 @@ if($scan==1) { // ------------ SCAN ------------
   if($success==0)
   {
     echo '<span style="color:red;font-weight:bold;">Angriff nicht erfolgreich!</span><br />';
-    $s='Es wurde versucht, deinen PC 10.47.'.$remote['ip'].' ('.$remote['name'].') zu &uuml;bernehmen! Der Angriff schlug fehl!<br />';
+    $s='Es wurde versucht, deinen PC 10.47.'.$remote['ip'].' ('.$remote['name'].') zu übernehmen! Der Angriff schlug fehl!<br />';
     if($noticed==1) { $s.='Der Angreifer konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!';
     } else { $s.='Der Angreifer konnte anonym bleiben!'; }
     addsysmsg($remote[owner],$s.$msg);
 
   } else {
-    echo '<span style="color:green;font-weight:bold;">Du hast den feindlichen PC &uuml;bernommen!</span><br />';
+    echo '<span style="color:green;font-weight:bold;">Du hast den feindlichen PC übernommen!</span><br />';
 
     $rem_own=getuser($remote2[owner]);
     if($rem_own!=false) {
@@ -896,13 +896,13 @@ if($scan==1) { // ------------ SCAN ------------
         } while($r===false);
       }
       saveuser($remote['owner'],$rem_own);
-      $s='Dein PC 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde von einem feindlichen User &uuml;bernommen!<br />';
+      $s='Dein PC 10.47.'.$remote['ip'].' ('.$remote['name'].') wurde von einem feindlichen User übernommen!<br />';
       if($noticed==1) { $s.='Der Angreifer konnte als [usr='.$usrid.']'.$usr['name'].'[/usr] identifiziert werden!';
       } else { $s.='Der Angreifer konnte anonym bleiben!'; }
       addsysmsg($remote['owner'],$s.$msg);
     }
 
-    # WICHTIG!! Im folgenden die Reihenfolge beachten!! Falsche RF kann T�DLICH sein!!
+    # WICHTIG!! Im folgenden die Reihenfolge beachten!! Falsche RF kann T�DLICH sein!!
     $remote=$remote2;
     $local=$local2;
     $c=mysql_fetch_assoc(db_query('SELECT code FROM clusters WHERE id=\''.$usr['cluster'].'\';'));

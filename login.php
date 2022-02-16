@@ -26,11 +26,8 @@ if ($action == '')
     $action = $_REQUEST['m'];
 
 //var_dump("post:".$_POST['bypass']);
-if ($action == 'login')
-{
-    if ((int)@$get->get_file('data/calc-time.dat') <= time() || @$get->get_file('data/calc-running.dat') ==
-        'yes' && $_POST['bypass'] != 1)
-    {
+if ($action == 'login') {
+    if ($get->get_file('data/calc-time.dat') <= time() || $get->get_file('data/calc-running.dat') == 'yes' && $_POST['bypass'] != 1) {
         $pwd = htmlentities($_REQUEST['pwd']);
         $nick = htmlentities($_REQUEST['nick']);
         $server = (int)$_REQUEST['server'];
@@ -38,12 +35,12 @@ if ($action == 'login')
         $key = $_POST['key'];
         $chars = $_POST['chars'];
         $ipcheck = $_REQUEST['noipcheck'];
-        $stat = @$get->get_file('data/calc-stat.dat');
+        $stat = $get->get_file('data/calc-stat.dat');
         echo '<html>
   <head>
   <title>Sorry</title></head><body style="font-family:arial;text-align:center;vertical-align:middle;">
   <h1>Sorry</h1>
-  <b>Der Server ist im Moment mit der Kalkulation der Punktest&auml;nde besch&auml;ftigt!</b>
+  <b>Der Server ist im Moment mit der Kalkulation der Punktestände beschäftigt!</b>
   <br /><br />Aktueller Status: <tt>' . $stat . '</tt>
   <br /><br />
   <form action="login.php?a=login" method="post">
@@ -58,7 +55,7 @@ if ($action == 'login')
   <input type="submit" value="Ignorieren" />
   </form>
   </body></html>';
-        if (@$get->get_file('data/calc-running.dat') == '')
+        if ($get->get_file('data/calc-running.dat') == '')
             include ('calc_points.php');
         exit;
     }
@@ -123,7 +120,7 @@ if ($action == 'login')
 
         if ($usr['password'] != $pwd)
         {
-            $gres->simple_message('Passwort f�r diesen Account falsch!');
+            $gres->simple_message('Passwort f�r diesen Account falsch!');
             $dbc->db_query('INSERT INTO logs SET type=\'badlogin\', usr_id=\'' . $usr['id'] .
                 '\', payload=\'pwd=' . mysql_escape_string($_REQUEST['pwd']) . ', ip=' .
                 mysql_escape_string($_SERVER["REMOTE_ADDR"]) . '\';'); #ip= added by zakx at Wed Oct 27 16:42:43 GMT-2 2004
@@ -155,9 +152,9 @@ if ($action == 'login')
     <h1>Account gesperrt!</h1>
     <b>Dieser Account wurde durch den Spiel-Administrator <em>' . $usr['locked_by'] .
                     '</em> ' . $time . ' gesperrt!</b>
-    <br /><br />Der Grund daf�r ist: <em>' . $usr['locked_reason'] .
+    <br /><br />Der Grund dafür ist: <em>' . $usr['locked_reason'] .
                     '</em><br />Bei Fragen, Beschwerden und wenn
-    du die genauen Gr&uuml;nde wissen willst, schick eine Email an <a href="mailto:' .
+    du die genauen Gründe wissen willst, schick eine Email an <a href="mailto:' .
                     $admin_email . '?subject=' . urlencode('Sperrung des Accounts ' . $usr['name']) .
                     '">' . $admin_email . '</a>!
     </body></html>';
@@ -212,7 +209,7 @@ if ($action == 'login')
 
         } else
         {
-            $gres->simple_message('Die Funktion des Direkt-LogIns &uuml;ber die Adresszeile steht ab sofort nur noch ExtendedAccount-Usern zur verf&uuml;gung.<br />Bitte log dich &uuml;ber die Startseite ein!',
+            $gres->simple_message('Die Funktion des Direkt-LogIns über die Adresszeile steht ab sofort nur noch ExtendedAccount-Usern zur verfügung.<br />Bitte log dich über die Startseite ein!',
                 'info');
         }
 

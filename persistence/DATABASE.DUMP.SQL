@@ -1,15 +1,27 @@
--- phpMyAdmin SQL Dump
--- version 2.11.4
--- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Erstellungszeit: 15. August 2008 um 13:50
--- Server Version: 5.0.51
--- PHP-Version: 5.2.5
+-- Cleanup
+--
 
---
--- Datenbank: `htn`
---
+DROP TABLE IF EXISTS abook_entrys;
+DROP TABLE IF EXISTS attacks;
+DROP TABLE IF EXISTS cboards;
+DROP TABLE IF EXISTS clusters;
+DROP TABLE IF EXISTS cl_pacts;
+DROP TABLE IF EXISTS cl_reqs;
+DROP TABLE IF EXISTS da_participants;
+DROP TABLE IF EXISTS distr_attacks;
+DROP TABLE IF EXISTS logins;
+DROP TABLE IF EXISTS logs;
+DROP TABLE IF EXISTS mails;
+DROP TABLE IF EXISTS pcs;
+DROP TABLE IF EXISTS rank_clusters;
+DROP TABLE IF EXISTS rank_users;
+DROP TABLE IF EXISTS setting;
+DROP TABLE IF EXISTS sysmsgs;
+DROP TABLE IF EXISTS transfers;
+DROP TABLE IF EXISTS upgrades;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS verify_imgs;
 
 -- --------------------------------------------------------
 
@@ -128,8 +140,8 @@ CREATE TABLE IF NOT EXISTS `clusters` (
 --
 
 INSERT INTO `clusters` (`id`, `name`, `code`, `events`, `tax`, `money`, `infotext`, `points`, `logofile`, `homepage`, `box1`, `box2`, `box3`, `acceptnew`, `rank`, `notice`, `srate_total_cnt`, `srate_success_cnt`, `srate_noticed_cnt`) VALUES
-(1, 'Administration', '=ADM!N=', ' 19:31 Der Cluster wird durch Administrator gegr&uuml;ndet!', 1, 8, NULL, 33, NULL, NULL, 'Wichtig', 'Allgemein', 'Alte Beiträge', 'yes', 0, NULL, 0, 0, 0),
-(2, 'TestCluster', '-=TC=-', ' 14:44 Der Cluster wird durch TestUser gegr&uuml;ndet!', 1, 2, NULL, 0, NULL, NULL, 'Wichtig', 'Allgemein', 'Alte Beiträge', 'yes', 1, NULL, 0, 0, 0);
+(1, 'Administration', '=ADM!N=', ' 19:31 Der Cluster wird durch Administrator gegründet!', 1, 8, NULL, 33, NULL, NULL, 'Wichtig', 'Allgemein', 'Alte Beiträge', 'yes', 0, NULL, 0, 0, 0),
+(2, 'TestCluster', '-=TC=-', ' 14:44 Der Cluster wird durch TestUser gegründet!', 1, 2, NULL, 0, NULL, NULL, 'Wichtig', 'Allgemein', 'Alte Beiträge', 'yes', 1, NULL, 0, 0, 0);
 
 -- --------------------------------------------------------
 
